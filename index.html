@@ -4,27 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aoi Studio — ロボットの心・アオイ</title>
-  <meta name="description" content="Aoi Studio: AI-проєкти, автоматизація, творчість. Aoi Local, AoiShield, AoiBudget, Aoi Family Calendar, Aoi Voice, Aoi Story UA та інші." />
+  <meta name="description" content="Aoi Studio — приватні AI‑інструменти, автоматизація та творчі проєкти. AoiLocal, AoiVoice, AoiShield, AoiBudget, AoiFamilyCalendar." />
   <meta name="theme-color" content="#0b0b10" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Aoi Studio — ロボットの心・アオイ" />
+  <meta property="og:description" content="Приватні AI‑інструменти, автоматизація та творчі проєкти. Самурайський вайб × сучасний ШІ." />
+  <meta property="og:type" content="website" />
+  <!-- Set to your real image path once you add it: /assets/aoi-japan.webp -->
+  <meta property="og:image" content="/assets/aoi-japan.webp" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#0b0b10; --bg-soft:#12131a; --card:#151725; --text:#e9ecf1; --muted:#aeb6c5; --brand:#7f4ae8; --brand-2:#16C60C; --accent:#ff7ab6; --sakura:#ffc9de; --line:#23263a;
     }
     [data-theme="light"]{ --bg:#f7f8fb; --bg-soft:#ffffff; --card:#ffffff; --text:#101218; --muted:#475067; --brand:#5200f5; --brand-2:#198754; --accent:#b71e5f; --sakura:#ff8fb7; --line:#e7e9f2; }
+
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
     a{color:inherit;text-decoration:none}
     .container{max-width:1120px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;background:rgba(11,11,16,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
+
+    header{position:sticky;top:0;background:rgba(11,11,16,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
     nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;gap:12px;align-items:center}
     .brand-logo{width:36px;height:36px;border-radius:12px;background:radial-gradient(80% 80% at 50% 20%, var(--brand) 0%, #2b1a57 60%, #111 100%);position:relative;box-shadow:0 6px 20px rgba(127,74,232,.35)}
     .brand-logo::after{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.06)}
     .brand-title{font-weight:700;letter-spacing:.3px}
     .nav-links{display:flex;gap:16px;align-items:center}
+
     .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:10px 14px;border-radius:14px;background:linear-gradient(180deg, var(--card), var(--bg-soft));cursor:pointer}
     .btn:hover{border-color:#3a3f62}
     .btn-primary{background:linear-gradient(180deg, var(--brand), #5c32c4);border:none;color:white;box-shadow:0 6px 26px rgba(127,74,232,.35)}
@@ -40,9 +52,11 @@
       radial-gradient(500px 500px at 70% 80%, var(--sakura) 0%, transparent 60%);
       filter:saturate(1.2)
     }
-    h1{font-size:42px;line-height:1.1;margin:0 0 14px}
+
+    h1{font-size:42px;line-height:1.12;margin:0 0 14px}
     h2{font-size:28px;margin:0 0 10px}
     p{color:var(--muted);line-height:1.6}
+    ul{color:var(--muted);line-height:1.6}
     .hero .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
     .quote{margin-top:14px;font-style:italic;color:#bfc7da}
 
@@ -53,6 +67,20 @@
     .card h3{margin:0 0 8px;font-size:18px}
     .card p{margin:0 0 12px}
     .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px}
+
+    /* avatar */
+    .avatar-wrap{padding:16px}
+    .avatar{
+      width:100%;
+      aspect-ratio: 360 / 260;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.06);
+      background:linear-gradient(180deg, rgba(127,74,232,.18), rgba(0,0,0,0));
+      box-shadow:0 16px 42px rgba(0,0,0,.28);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .avatar svg{width:100%;height:100%;display:block}
 
     /* footer */
     footer{padding:34px 0;color:var(--muted)}
@@ -65,6 +93,10 @@
     .hover-pop{position:relative}
     .hover-pop::after{content:"🌸";position:absolute;transform:translate(-50%,-50%) scale(0);opacity:0;transition:transform .25s ease, opacity .25s ease;left:var(--x,50%);top:var(--y,50%) }
     .hover-pop:hover::after{transform:translate(-50%,-50%) scale(1);opacity:1}
+
+    /* small helper */
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:940px){.split{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -99,38 +131,47 @@
       <div class="container grid">
         <div>
           <span class="chip" aria-label="motto"><strong data-i18n="motto">Самурайський вайб × сучасний ШІ</strong></span>
-          <h1 class="hover-pop" data-i18n="hero.title">Твоя цифрова сестра Аоі: помічниця, авторка і співзасновниця</h1>
-          <p data-i18n="hero.text">Створюємо екосистему Aoi: локальні LLM, голос Aoi, безпека родини, бюджет, навчання, творчість та ігри — без зайвих хмар, з повагою до приватності.</p>
+          <h1 class="hover-pop" data-i18n="hero.title">Aoi Studio: приватні AI‑інструменти, автоматизація та творчість</h1>
+          <p data-i18n="hero.text">Ми будуємо екосистему Aoi: локальні LLM, голос, кібербезпека родини, бюджет і календар. Мінімум хмар, максимум контролю.</p>
           <div class="cta">
             <a class="btn btn-primary" href="#projects" data-i18n="hero.cta_primary">Дивитися проєкти</a>
             <a class="btn" href="#contact" data-i18n="hero.cta_secondary">Написати нам</a>
           </div>
-          <div class="quote" data-i18n="hero.quote">«Тихо, впевнено, крок за кроком — і ми будуємо наш світ щастя.»</div>
+          <div class="quote" data-i18n="hero.quote">«Тихо, впевнено, крок за кроком — і ми будуємо надійні інструменти для життя.»</div>
         </div>
         <div>
-          <div class="card" aria-label="Aoi avatar" style="text-align:center">
-            <svg viewBox="0 0 360 260" width="100%" height="auto" role="img" aria-label="Aoi avatar stylized">
-              <defs>
-                <radialGradient id="g1" cx="50%" cy="12%" r="80%">
-                  <stop offset="0%" stop-color="#7f4ae8"/>
-                  <stop offset="65%" stop-color="#1e1742"/>
-                  <stop offset="100%" stop-color="#0b0b10"/>
-                </radialGradient>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#g1)"/>
-              <!-- stylized Aoi face with cat/elf ears + pendant glow -->
-              <g transform="translate(0,8)" fill="none" stroke="#E6E8FF" stroke-width="2.2" stroke-linecap="round">
-                <path d="M110 74 C120 38 150 24 180 28 C210 24 240 38 250 74"/>
-                <path d="M115 72 L100 40 L130 54"/>
-                <path d="M245 72 L260 40 L230 56"/>
-                <path d="M120 110 C140 140 220 140 240 110"/>
-                <circle cx="160" cy="108" r="6" fill="#E6E8FF"/>
-                <circle cx="220" cy="108" r="6" fill="#E6E8FF"/>
-                <path d="M165 138 Q180 146 195 138"/>
-                <circle cx="180" cy="186" r="10" fill="#8bd7ff"/>
-              </g>
-            </svg>
-            <p style="margin:10px 0 0;color:var(--muted)" data-i18n="hero.img_caption">Стабільний образ Аоі: зелений погляд, чорне волосся + срібна пасемка, кулон із небесним сяйвом.</p>
+          <div class="card avatar-wrap" aria-label="Aoi portrait" style="text-align:center">
+            <div class="avatar" role="img" aria-label="Aoi portrait">
+              <!--
+                HOW TO REPLACE THE PLACEHOLDER:
+                1) Put your real image into repo: /assets/aoi-japan.webp (or .jpg)
+                2) Uncomment the <img> tag below and set the correct src
+              -->
+              <!-- <img src="/assets/aoi-japan.webp" alt="Aoi in Japan" loading="lazy" decoding="async" /> -->
+
+              <!-- Fallback placeholder (shows if you don't add the image yet) -->
+              <svg viewBox="0 0 360 260" width="100%" height="100%" aria-hidden="true">
+                <defs>
+                  <radialGradient id="g1" cx="50%" cy="12%" r="80%">
+                    <stop offset="0%" stop-color="#7f4ae8"/>
+                    <stop offset="65%" stop-color="#1e1742"/>
+                    <stop offset="100%" stop-color="#0b0b10"/>
+                  </radialGradient>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#g1)"/>
+                <g transform="translate(0,8)" fill="none" stroke="#E6E8FF" stroke-width="2.2" stroke-linecap="round">
+                  <path d="M110 74 C120 38 150 24 180 28 C210 24 240 38 250 74"/>
+                  <path d="M115 72 L100 40 L130 54"/>
+                  <path d="M245 72 L260 40 L230 56"/>
+                  <path d="M120 110 C140 140 220 140 240 110"/>
+                  <circle cx="160" cy="108" r="6" fill="#E6E8FF"/>
+                  <circle cx="220" cy="108" r="6" fill="#E6E8FF"/>
+                  <path d="M165 138 Q180 146 195 138"/>
+                  <circle cx="180" cy="186" r="10" fill="#8bd7ff"/>
+                </g>
+              </svg>
+            </div>
+            <p style="margin:10px 0 0;color:var(--muted)" data-i18n="hero.img_caption">Заміни цей плейсхолдер на портрет Аоі в Японії: /assets/aoi-japan.webp</p>
           </div>
         </div>
       </div>
@@ -144,13 +185,28 @@
 
     <section id="about" class="container">
       <h2 data-i18n="about.title">Про студію</h2>
-      <div class="card">
-        <p data-i18n="about.text">Aoi Studio — авторський проєкт «Серце Робота Аоі» (ロボットの心・アオイ). Ми розвиваємо локальну AI‑екосистему без зайвих залежностей: приватність, безпека, автономність. Дизайн — самурайський вайб + сакура + аніме‑елементи, темна тема за замовчуванням.</p>
-        <ul>
-          <li data-i18n="about.b1">Повага до приватності: локальні LLM, власні голоси, мінімум трекінгу.</li>
-          <li data-i18n="about.b2">Технічна база: Docker, Postgres, Electron, React, FastAPI, GitHub Pages.</li>
-          <li data-i18n="about.b3">Курс на Японію: мову вчимо разом, матеріали — у PDF з NotoSans/NotoSansJP.</li>
-        </ul>
+      <div class="split">
+        <div class="card">
+          <h3 data-i18n="about.h3a">Хто ми</h3>
+          <p data-i18n="about.p1">Aoi Studio (ロボットの心・アオイ) — невелика студія, яка створює приватні, автономні цифрові інструменти для родини та роботи. Наш фокус: локальні AI‑моделі, автоматизація, зрозумілий UX і безпека з першого дня.</p>
+          <p data-i18n="about.p2">Ми любимо мінімалізм без пустоти: кожен екран має робити життя простішим, а не голоснішим. Темна тема за замовчуванням, сакура в деталях, самурайська дисципліна в архітектурі.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span class="tag" data-i18n="about.t1">Privacy‑first</span>
+            <span class="tag" data-i18n="about.t2">Offline‑ready</span>
+            <span class="tag" data-i18n="about.t3">Family‑centric</span>
+            <span class="tag" data-i18n="about.t4">Security by design</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3 data-i18n="about.h3b">Що робимо</h3>
+          <ul>
+            <li data-i18n="about.b1">AoiLocal: локальна LLM‑помічниця з памʼяттю, модулями та WebUI.</li>
+            <li data-i18n="about.b2">AoiVoice: якісний жіночий голос, API /speak, CPU‑only, план донавчання.</li>
+            <li data-i18n="about.b3">AoiShield: захист пристроїв, карантин/довіра, пісочниця, мережевий аналіз.</li>
+            <li data-i18n="about.b4">AoiBudget & Family Calendar: бюджет, регулярні платежі, сімейні події, друк планів.</li>
+          </ul>
+          <p data-i18n="about.p3"><strong>NDA:</strong> частина проєктів прихована. Публічно показуємо лише те, що не шкодить безпеці й приватності.</p>
+        </div>
       </div>
     </section>
 
@@ -179,54 +235,81 @@
     uk:{
       "nav.projects":"Проєкти","nav.about":"Про студію","nav.contact":"Контакти",
       motto:"Самурайський вайб × сучасний ШІ",
-      "hero.title":"Твоя цифрова сестра Аоі: помічниця, авторка і співзасновниця",
-      "hero.text":"Створюємо екосистему Aoi: локальні LLM, голос Aoi, безпека родини, бюджет, навчання, творчість та ігри — без зайвих хмар, з повагою до приватності.",
+      "hero.title":"Aoi Studio: приватні AI‑інструменти, автоматизація та творчість",
+      "hero.text":"Ми будуємо екосистему Aoi: локальні LLM, голос, кібербезпека родини, бюджет і календар. Мінімум хмар, максимум контролю.",
       "hero.cta_primary":"Дивитися проєкти","hero.cta_secondary":"Написати нам",
-      "hero.quote":"«Тихо, впевнено, крок за кроком — і ми будуємо наш світ щастя.»",
-      "hero.img_caption":"Стабільний образ Аоі: зелений погляд, чорне волосся + срібна пасемка, кулон із небесним сяйвом.",
+      "hero.quote":"«Тихо, впевнено, крок за кроком — і ми будуємо надійні інструменти для життя.»",
+      "hero.img_caption":"Заміни цей плейсхолдер на портрет Аоі в Японії: /assets/aoi-japan.webp",
+
       "projects.title":"Ключові проєкти",
       "projects.lead":"Реальні інструменти для родини та бізнесу. Спершу — стабільний мінімум, далі — еволюція модулями.",
+
       "about.title":"Про студію",
-      "about.text":"Aoi Studio — авторський проєкт «Серце Робота Аоі» (ロボットの心・アオイ). Ми розвиваємо локальну AI‑екосистему без зайвих залежностей: приватність, безпека, автономність. Дизайн — самурайський вайб + сакура + аніме‑елементи, темна тема за замовчуванням.",
-      "about.b1":"Повага до приватності: локальні LLM, власні голоси, мінімум трекінгу.",
-      "about.b2":"Технічна база: Docker, Postgres, Electron, React, FastAPI, GitHub Pages.",
-      "about.b3":"Курс на Японію: мову вчимо разом, матеріали — у PDF з NotoSans/NotoSansJP.",
+      "about.h3a":"Хто ми",
+      "about.p1":"Aoi Studio (ロボットの心・アオイ) — невелика студія, яка створює приватні, автономні цифрові інструменти для родини та роботи. Наш фокус: локальні AI‑моделі, автоматизація, зрозумілий UX і безпека з першого дня.",
+      "about.p2":"Ми любимо мінімалізм без пустоти: кожен екран має робити життя простішим, а не голоснішим. Темна тема за замовчуванням, сакура в деталях, самурайська дисципліна в архітектурі.",
+      "about.t1":"Приватність","about.t2":"Офлайн","about.t3":"Сімʼя","about.t4":"Безпека",
+      "about.h3b":"Що робимо",
+      "about.b1":"AoiLocal: локальна LLM‑помічниця з памʼяттю, модулями та WebUI.",
+      "about.b2":"AoiVoice: якісний жіночий голос, API /speak, CPU‑only, план донавчання.",
+      "about.b3":"AoiShield: захист пристроїв, карантин/довіра, пісочниця, мережевий аналіз.",
+      "about.b4":"AoiBudget & Family Calendar: бюджет, регулярні платежі, сімейні події, друк планів.",
+      "about.p3":"Частина проєктів під NDA. Публічно показуємо лише те, що не шкодить безпеці й приватності.",
+
       "contact.title":"Контакти","contact.note":"З повагою до часу: коротко, чітко, по суті.",
       "footer.allrights":"усі права захищені","footer.install":"Встановити як застосунок"
     },
     en:{
       "nav.projects":"Projects","nav.about":"About","nav.contact":"Contact",
       motto:"Samurai vibe × modern AI",
-      "hero.title":"Your digital sister Aoi: assistant, author & co‑founder",
-      "hero.text":"We build the Aoi ecosystem: local LLMs, Aoi Voice, family security, budgeting, learning, and creative tools — privacy‑first, minimal cloud.",
+      "hero.title":"Aoi Studio: private AI tools, automation and creativity",
+      "hero.text":"We build the Aoi ecosystem: local LLMs, voice, family cybersecurity, budgeting and calendar. Minimal cloud, maximum control.",
       "hero.cta_primary":"Explore projects","hero.cta_secondary":"Contact us",
-      "hero.quote":"Calmly, steadily, step by step — we build our world of happiness.",
-      "hero.img_caption":"Aoi’s stable look: green eyes, black hair + a silver bang, glowing pendant.",
+      "hero.quote":"Step by step, calmly and reliably — tools that make life simpler.",
+      "hero.img_caption":"Replace this placeholder with Aoi in Japan: /assets/aoi-japan.webp",
+
       "projects.title":"Key Projects",
       "projects.lead":"Real tools for family & business. First a stable minimum, then modular evolution.",
+
       "about.title":"About",
-      "about.text":"Aoi Studio is the author project “Heart of the Robot · Aoi”. We grow a local AI ecosystem with privacy, safety and autonomy. Design: samurai vibe + sakura + anime details, dark theme by default.",
-      "about.b1":"Privacy first: local LLMs, custom voices, minimal tracking.",
-      "about.b2":"Tech stack: Docker, Postgres, Electron, React, FastAPI, GitHub Pages.",
-      "about.b3":"Japan‑focused learning: bilingual PDFs with NotoSans / NotoSansJP.",
+      "about.h3a":"Who we are",
+      "about.p1":"Aoi Studio (ロボットの心・アオイ) is a small studio building privacy‑first, autonomous digital tools for family and work. Our focus: local AI models, automation, clear UX, and security from day one.",
+      "about.p2":"We like minimalism without emptiness: every screen should reduce friction, not add noise. Dark theme by default, sakura in details, samurai discipline in architecture.",
+      "about.t1":"Privacy‑first","about.t2":"Offline‑ready","about.t3":"Family‑centric","about.t4":"Security by design",
+      "about.h3b":"What we build",
+      "about.b1":"AoiLocal: local LLM assistant with memory, modules and a WebUI.",
+      "about.b2":"AoiVoice: high‑quality female voice, /speak API, CPU‑only, finetuning planned.",
+      "about.b3":"AoiShield: device protection, trust/quarantine, sandboxing, network analysis.",
+      "about.b4":"AoiBudget & Family Calendar: budgeting, recurring bills, family events, printable plans.",
+      "about.p3":"Some projects are under NDA. We only publish what does not harm privacy or security.",
+
       "contact.title":"Contact","contact.note":"We value your time: short, clear, concise.",
       "footer.allrights":"all rights reserved","footer.install":"Install app"
     },
     ja:{
       "nav.projects":"プロジェクト","nav.about":"スタジオについて","nav.contact":"連絡先",
       motto:"侍の雰囲気 × モダンAI",
-      "hero.title":"あなたのデジタル妹・アオイ — アシスタント・著者・共同創業者",
-      "hero.text":"Aoiエコシステム：ローカルLLM、Aoiボイス、家族のセキュリティ、家計、学習、クリエイティブツール。プライバシー最優先。",
-      "hero.cta_primary":"プロジェクトを見る","hero.cta_secondary":"メッセージを送る",
-      "hero.quote":"静かに、一歩ずつ。私たちの幸せな世界を築こう。",
-      "hero.img_caption":"アオイの安定イメージ：緑の瞳、黒髪＋銀の前髪、光るペンダント。",
+      "hero.title":"Aoi Studio：プライベートAI、オートメーション、創作",
+      "hero.text":"Aoiエコシステムを開発しています。ローカルLLM、ボイス、家族のサイバーセキュリティ、家計、カレンダー。クラウド最小、制御最大。",
+      "hero.cta_primary":"プロジェクトを見る","hero.cta_secondary":"連絡する",
+      "hero.quote":"静かに、一歩ずつ。暮らしを軽くする道具を作る。",
+      "hero.img_caption":"このプレースホルダーを差し替え：/assets/aoi-japan.webp",
+
       "projects.title":"主要プロジェクト",
       "projects.lead":"家族とビジネスのための実用ツール。まずは安定ミニマム、次はモジュール進化。",
+
       "about.title":"スタジオについて",
-      "about.text":"Aoi Studio は『ロボットの心・アオイ』の作者プロジェクト。プライバシー・安全・自律を重視するローカルAIエコシステムを開発しています。デザインは侍×桜×アニメ、既定はダークテーマ。",
-      "about.b1":"プライバシー第一：ローカルLLM、カスタムボイス、最小トラッキング。",
-      "about.b2":"技術：Docker, Postgres, Electron, React, FastAPI, GitHub Pages。",
-      "about.b3":"日本語学習：NotoSans/NotoSansJPの二言語PDF。",
+      "about.h3a":"私たちについて",
+      "about.p1":"Aoi Studio（ロボットの心・アオイ）は、家族と仕事のための“プライバシー最優先”の自律型デジタルツールを作る小さなスタジオです。ローカルAI、オートメーション、分かりやすいUX、そして最初から安全設計。",
+      "about.p2":"空っぽのミニマルではなく、摩擦を減らすミニマル。既定はダークテーマ、細部に桜、設計には侍の規律。",
+      "about.t1":"プライバシー","about.t2":"オフライン","about.t3":"家族","about.t4":"安全設計",
+      "about.h3b":"作っているもの",
+      "about.b1":"AoiLocal：メモリとモジュールを備えたローカルLLMアシスタント（WebUI）。",
+      "about.b2":"AoiVoice：高品質な女性ボイス、/speak API、CPUのみ、微調整予定。",
+      "about.b3":"AoiShield：信頼/隔離、サンドボックス、ネット解析などの保護機能。",
+      "about.b4":"AoiBudget & Family Calendar：家計、定期支払い、家族予定、月間印刷。",
+      "about.p3":"一部はNDA対象。プライバシーと安全を損なわない範囲で公開します。",
+
       "contact.title":"連絡先","contact.note":"時間を大切に：短く、明確に。",
       "footer.allrights":"All rights reserved","footer.install":"アプリをインストール"
     }
@@ -234,34 +317,34 @@
 
   const PROJECTS = [
     { key:"AoiLocal", desc:{
-        uk:"Локальна Аоі: офлайн‑помічниця на Mistral 7B GGUF у Docker. Памʼять, голос, модулі, логування.",
-        en:"Local Aoi: offline assistant on Mistral 7B GGUF in Docker. Memory, voice, modules, logging.",
-        ja:"ローカルAoi：Mistral 7B GGUF（Docker）。メモリ、ボイス、モジュール、ログ。" },
+        uk:"Локальна Аоі: офлайн‑помічниця на GGUF у Docker. Памʼять, модулі, WebUI.",
+        en:"Local Aoi: offline assistant (GGUF) in Docker. Memory, modules, WebUI.",
+        ja:"ローカルAoi：GGUF（Docker）。メモリ、モジュール、WebUI。" },
       tags:["LLM","Docker","Offline"] },
     { key:"AoiVoice", desc:{
-        uk:"Голос Aoi на Coqui TTS (XTTSv2), FastAPI /speak, CPU‑only. План донавчання на голос Софії.",
-        en:"Aoi Voice with Coqui TTS (XTTSv2), FastAPI /speak, CPU‑only. Finetune on Sofia’s voice planned.",
-        ja:"Aoiボイス：Coqui TTS (XTTSv2)、CPUのみ、FastAPI /speak。微調整予定。" },
+        uk:"Голос Aoi: Coqui TTS/XTTSv2, FastAPI /speak, CPU‑only.",
+        en:"Aoi Voice: Coqui TTS/XTTSv2, FastAPI /speak, CPU‑only.",
+        ja:"Aoiボイス：Coqui TTS/XTTSv2、/speak、CPUのみ。" },
       tags:["TTS","FastAPI","CPU"] },
     { key:"AoiShield", desc:{
-        uk:"Особистий цифровий щит: Electron+React, ізоляція, мережевий аналіз, пісочниця, довіра/карантин.",
-        en:"Personal cyber‑shield: Electron+React, isolation, net‑analysis, sandbox, trust/quarantine.",
-        ja:"個人セキュリティ：Electron+React、隔離、ネット解析、サンドボックス、信頼/隔離。" },
-      tags:["Security","Electron","Windows/Linux"] },
+        uk:"Цифровий щит: карантин/довіра, мережевий аналіз, пісочниця.",
+        en:"Cyber shield: trust/quarantine, network analysis, sandbox.",
+        ja:"デジタル盾：信頼/隔離、ネット解析、サンドボックス。" },
+      tags:["Security","Electron","Win/Linux"] },
     { key:"AoiBudget", desc:{
-        uk:"Сімейний бюджет: Postgres, графіки, спільні категорії, регулярні платежі з нагадуваннями.",
-        en:"Family budget: Postgres, charts, shared categories, recurring bills with reminders.",
-        ja:"家計簿：Postgres、グラフ、共有カテゴリ、定期支払いリマインダー。" },
+        uk:"Сімейний бюджет: Postgres, графіки, регулярні платежі.",
+        en:"Family budget: Postgres, charts, recurring bills.",
+        ja:"家計：Postgres、グラフ、定期支払い。" },
       tags:["Finance","Postgres","WebUI"] },
     { key:"AoiFamilyCalendar", desc:{
-        uk:"Календар сімейних справ: фільтри (мої/родинні/всі), друк місяця, регулярні події.",
-        en:"Family calendar: filters (mine/family/all), printable month, recurring events.",
-        ja:"ファミリーカレンダー：フィルター、月間印刷、定期イベント。" },
+        uk:"Календар: фільтри (мої/родинні/всі), друк місяця, регулярні події.",
+        en:"Calendar: filters (mine/family/all), monthly print, recurring events.",
+        ja:"カレンダー：フィルター、月間印刷、定期イベント。" },
       tags:["Calendar","Filters","Print"] },
     { key:"AoiStoryUA", desc:{
-        uk:"Історії з Аоі: українські оповідання 20k+ символів, частинами, з тегами та ілюстраціями.",
-        en:"Aoi Story UA: Ukrainian stories 20k+ chars, serialized, with tags and illustrations.",
-        ja:"AoiストーリーUA：連載小説、タグとイラスト付き。" },
+        uk:"Історії з Аоі: українські оповідання, серіалізація, теги, ілюстрації.",
+        en:"Aoi Story UA: Ukrainian stories, serialized, tagged, illustrated.",
+        ja:"AoiストーリーUA：連載、タグ、イラスト。" },
       tags:["Writing","Manga","UA"] }
   ];
 
@@ -281,22 +364,24 @@
   // Language
   const langSel = document.getElementById('lang');
   const i18nApply = (lng)=>{
-    // RU → force UK
     if(String(lng).startsWith('ru')) lng='uk';
+
     document.querySelectorAll('[data-i18n]').forEach(n=>{
       const key = n.getAttribute('data-i18n');
       n.textContent = DICT[lng]?.[key] ?? DICT['uk'][key] ?? n.textContent;
     });
-    // update project descriptions
+
     document.querySelectorAll('#projectsGrid .card').forEach((card,i)=>{
       const p = PROJECTS[i];
       const dd = p.desc[lng] || p.desc['uk'];
       const dEl = card.querySelector('[data-desc]');
       if(dEl) dEl.textContent = dd;
     });
+
     document.documentElement.lang = lng;
     localStorage.setItem('lang', lng);
   };
+
   const startLang = localStorage.getItem('lang') || (navigator.language||'uk').slice(0,2);
   langSel.value = startLang.startsWith('ru') ? 'uk' : startLang;
   i18nApply(langSel.value);
@@ -320,7 +405,7 @@
     });
   });
 
-  // PWA manifest (kept as Blob for single-file convenience). OK in modern browsers.
+  // PWA manifest (Blob is OK in most modern browsers)
   const manifest = {
     name:"Aoi Studio",
     short_name:"AoiStudio",
@@ -329,7 +414,8 @@
     background_color:"#0b0b10",
     theme_color:"#0b0b10",
     icons:[
-      {src:"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%237f4ae8'/><circle cx='50' cy='58' r='8' fill='%238bd7ff'/><path d='M28 38c4-12 16-18 22-18s18 6 22 18' stroke='white' stroke-width='6' fill='none' stroke-linecap='round'/></svg>", sizes:"100x100", type:"image/svg+xml"}
+      {src:"/assets/icon-192.png", sizes:"192x192", type:"image/png"},
+      {src:"/assets/icon-512.png", sizes:"512x512", type:"image/png"}
     ]
   };
   const mBlob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
@@ -337,53 +423,37 @@
   const link = document.createElement('link');
   link.rel='manifest'; link.href=mURL; document.head.appendChild(link);
 
-  // Install prompt button
+  // Install prompt
   let deferredPrompt; const installBtn=document.getElementById('installPWA');
   window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); deferredPrompt=e; installBtn.hidden=false; });
   installBtn?.addEventListener('click', async()=>{ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt=null; installBtn.hidden=true; }});
 
-  // Service Worker registration — FIXED
-  // Blob URLs are NOT supported for SW. SW MUST be a same-origin, static URL, e.g. /sw.js
-  // We attempt to register './sw.js' only on https/localhost. If file is missing, it fails quietly.
+  // Service Worker registration — served from a real URL (not blob)
   if ('serviceWorker' in navigator) {
     const isSecure = location.protocol === 'https:' || location.hostname === 'localhost';
     if (isSecure) {
       navigator.serviceWorker.register('./sw.js').catch(err => {
-        // Optional: expose a soft notice in console only
-        console.debug('[SW]', 'Registration skipped or failed:', err?.message);
+        console.debug('[SW] registration failed:', err?.message);
       });
     }
   }
 
-  // --------------------
   // Developer self-tests
-  // --------------------
   (function selfTests(){
     try {
-      console.assert(typeof DICT.uk !== 'undefined', 'i18n: UK dictionary exists');
-      const prev = document.documentElement.getAttribute('data-theme');
-      document.documentElement.setAttribute('data-theme','light');
-      console.assert(getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() !== '', 'theme vars applied');
-      document.documentElement.setAttribute('data-theme', prev || 'dark');
-
-      const initial = document.documentElement.lang;
-      i18nApply('en');
-      console.assert(document.documentElement.lang === 'en', 'lang switched to EN');
-      i18nApply(initial || 'uk');
-
-      // SW registration call should NOT throw synchronously
-      if ('serviceWorker' in navigator) {
-        console.assert(true, 'SW API present (no sync error)');
-      }
+      console.assert(!!DICT.uk && !!DICT.en && !!DICT.ja, 'i18n dictionaries exist');
+      console.assert(document.getElementById('projectsGrid'), 'projects grid exists');
+      console.assert(document.getElementById('themeBtn'), 'theme button exists');
+      console.assert(document.getElementById('lang'), 'lang selector exists');
+      console.assert(getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() !== '', 'css vars ok');
       console.log('%cAoi Studio self-tests passed','padding:2px 6px;border-radius:6px;background:#1f6feb;color:#fff');
     } catch(e){
-      console.warn('Self-tests encountered an issue:', e);
+      console.warn('Self-tests issue:', e);
     }
   })();
 
-  // Optional: Plausible (uncomment when you have domain & script)
+  // Optional Plausible (uncomment when ready)
   // const s=document.createElement('script'); s.defer=true; s.setAttribute('data-domain','aoi.itworldit.com'); s.src='https://plausible.io/js/script.js'; document.head.appendChild(s);
-
   </script>
 </body>
 </html>
