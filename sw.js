@@ -1,47 +1,44 @@
-// sw.js — Aoi Studio (offline-first, safe minimal)
-const CACHE_NAME = 'aoi-studio-v0.1';
+// Robot Aoi no Kokoro — minimal offline cache
+const CACHE_NAME = 'aoi-kokoro-v1.0.1';
 const ASSETS = [
-  './',
-  './index.html',
-  './sw.js',
-  // add these if you create them:
-  './assets/aoi-japan.webp',
-  // './assets/icon-192.png',
-  // './assets/icon-512.png',
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/site.js',
+  '/site.webmanifest',
+  '/assets/favicon.webp',
+  '/assets/logo-small.webp',
+  '/assets/logo-full.webp',
+  '/assets/aoi-hero.webp'
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS))
-  );
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)));
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
-    await Promise.all(keys.map((k) => (k !== CACHE_NAME ? caches.delete(k) : null)));
+    await Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key)));
     await self.clients.claim();
   })());
 });
 
-// Cache-first: fast + offline
-self.addEventListener('fetch', (event) => {
-  const req = event.request;
-
-  // Only GET
-  if (req.method !== 'GET') return;
-
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET') return;
   event.respondWith((async () => {
-    const cached = await caches.match(req);
+    const cached = await caches.match(event.request);
     if (cached) return cached;
-
-    const fresh = await fetch(req);
-    // cache same-origin basic responses
-    if (fresh && fresh.ok && fresh.type === 'basic') {
-      const cache = await caches.open(CACHE_NAME);
-      cache.put(req, fresh.clone());
+    try {
+      const fresh = await fetch(event.request);
+      if (fresh.ok && new URL(event.request.url).origin === self.location.origin) {
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(event.request, fresh.clone());
+      }
+      return fresh;
+    } catch (error) {
+      return caches.match('/index.html');
     }
-    return fresh;
   })());
 });

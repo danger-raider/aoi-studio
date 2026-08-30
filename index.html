@@ -1,458 +1,170 @@
-<!DOCTYPE html>
-<html lang="uk" data-theme="dark">
+<!doctype html>
+<html data-theme="light" lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aoi Studio — ロボットの心・アオイ</title>
-  <meta name="description" content="Aoi Studio — приватні AI‑інструменти, автоматизація та творчі проєкти. AoiLocal, AoiVoice, AoiShield, AoiBudget, AoiFamilyCalendar." />
-  <meta name="theme-color" content="#0b0b10" />
-
-  <!-- Open Graph / Social -->
-  <meta property="og:title" content="Aoi Studio — ロボットの心・アオイ" />
-  <meta property="og:description" content="Приватні AI‑інструменти, автоматизація та творчі проєкти. Самурайський вайб × сучасний ШІ." />
-  <meta property="og:type" content="website" />
-  <!-- Set to your real image path once you add it: /assets/aoi-japan.webp -->
-  <meta property="og:image" content="/assets/aoi-japan.webp" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#0b0b10; --bg-soft:#12131a; --card:#151725; --text:#e9ecf1; --muted:#aeb6c5; --brand:#7f4ae8; --brand-2:#16C60C; --accent:#ff7ab6; --sakura:#ffc9de; --line:#23263a;
-    }
-    [data-theme="light"]{ --bg:#f7f8fb; --bg-soft:#ffffff; --card:#ffffff; --text:#101218; --muted:#475067; --brand:#5200f5; --brand-2:#198754; --accent:#b71e5f; --sakura:#ff8fb7; --line:#e7e9f2; }
-
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Noto Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1120px;margin:0 auto;padding:0 20px}
-
-    header{position:sticky;top:0;background:rgba(11,11,16,.72);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:10}
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
-    .brand{display:flex;gap:12px;align-items:center}
-    .brand-logo{width:36px;height:36px;border-radius:12px;background:radial-gradient(80% 80% at 50% 20%, var(--brand) 0%, #2b1a57 60%, #111 100%);position:relative;box-shadow:0 6px 20px rgba(127,74,232,.35)}
-    .brand-logo::after{content:"";position:absolute;inset:0;border-radius:12px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.06)}
-    .brand-title{font-weight:700;letter-spacing:.3px}
-    .nav-links{display:flex;gap:16px;align-items:center}
-
-    .btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);padding:10px 14px;border-radius:14px;background:linear-gradient(180deg, var(--card), var(--bg-soft));cursor:pointer}
-    .btn:hover{border-color:#3a3f62}
-    .btn-primary{background:linear-gradient(180deg, var(--brand), #5c32c4);border:none;color:white;box-shadow:0 6px 26px rgba(127,74,232,.35)}
-    .btn-ghost{background:transparent}
-    .chip{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(127,74,232,.12)}
-
-    /* hero */
-    .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
-    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:60px 0}
-    .sakura{position:absolute;inset:0;pointer-events:none;opacity:.14;background:
-      radial-gradient(600px 600px at 80% 10%, var(--brand) 0%, transparent 60%),
-      radial-gradient(500px 400px at 20% 20%, var(--accent) 0%, transparent 60%),
-      radial-gradient(500px 500px at 70% 80%, var(--sakura) 0%, transparent 60%);
-      filter:saturate(1.2)
-    }
-
-    h1{font-size:42px;line-height:1.12;margin:0 0 14px}
-    h2{font-size:28px;margin:0 0 10px}
-    p{color:var(--muted);line-height:1.6}
-    ul{color:var(--muted);line-height:1.6}
-    .hero .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
-    .quote{margin-top:14px;font-style:italic;color:#bfc7da}
-
-    /* sections */
-    section{padding:56px 0;border-bottom:1px solid var(--line)}
-    .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .card{border:1px solid var(--line);border-radius:16px;padding:18px;background:linear-gradient(180deg, var(--card), var(--bg-soft));box-shadow:0 10px 30px rgba(0,0,0,.18)}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card p{margin:0 0 12px}
-    .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);font-size:12px}
-
-    /* avatar */
-    .avatar-wrap{padding:16px}
-    .avatar{
-      width:100%;
-      aspect-ratio: 360 / 260;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.06);
-      background:linear-gradient(180deg, rgba(127,74,232,.18), rgba(0,0,0,0));
-      box-shadow:0 16px 42px rgba(0,0,0,.28);
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .avatar svg{width:100%;height:100%;display:block}
-
-    /* footer */
-    footer{padding:34px 0;color:var(--muted)}
-
-    /* responsive */
-    @media (max-width:940px){.hero .grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.cards{grid-template-columns:1fr} h1{font-size:34px}}
-
-    /* fun hover emoji */
-    .hover-pop{position:relative}
-    .hover-pop::after{content:"🌸";position:absolute;transform:translate(-50%,-50%) scale(0);opacity:0;transition:transform .25s ease, opacity .25s ease;left:var(--x,50%);top:var(--y,50%) }
-    .hover-pop:hover::after{transform:translate(-50%,-50%) scale(1);opacity:1}
-
-    /* small helper */
-    .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media (max-width:940px){.split{grid-template-columns:1fr}}
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ロボット・アオイの心 — Robot Aoi no Kokoro</title>
+<meta content="Robot Aoi no Kokoro — студія на перетині AI, програмної інженерії, досліджень даних і human-centered technology." name="description"/>
+<meta content="#f7fbff" name="theme-color"/>
+<meta content="ロボット・アオイの心 — Robot Aoi no Kokoro" property="og:title"/>
+<meta content="心と心をつなぐ場所。 Місце, що поєднує серця." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="/assets/aoi-hero.webp" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/assets/favicon.webp" rel="icon" type="image/webp"/>
+<link href="/site.webmanifest" rel="manifest"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+JP:wght@400;500;600;700&amp;family=Noto+Serif:wght@500;600;700&amp;family=Noto+Serif+JP:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="/styles.css" rel="stylesheet"/>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div class="brand">
-          <div class="brand-logo" aria-hidden="true"></div>
-          <div>
-            <div class="brand-title">Aoi Studio</div>
-            <small style="color:var(--muted)">ロボットの心・アオイ — Серце Робота Аоі</small>
-          </div>
-        </div>
-        <div class="nav-links">
-          <a class="btn btn-ghost" href="#projects" data-i18n="nav.projects">Проєкти</a>
-          <a class="btn btn-ghost" href="#about" data-i18n="nav.about">Про студію</a>
-          <a class="btn btn-ghost" href="#contact" data-i18n="nav.contact">Контакти</a>
-          <button class="btn" id="themeBtn" title="Theme">🌓</button>
-          <select id="lang" class="btn" aria-label="Language">
-            <option value="uk">UK</option>
-            <option value="en">EN</option>
-            <option value="ja">日本語</option>
-          </select>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <div class="hero">
-      <div class="sakura" aria-hidden="true"></div>
-      <div class="container grid">
-        <div>
-          <span class="chip" aria-label="motto"><strong data-i18n="motto">Самурайський вайб × сучасний ШІ</strong></span>
-          <h1 class="hover-pop" data-i18n="hero.title">Aoi Studio: приватні AI‑інструменти, автоматизація та творчість</h1>
-          <p data-i18n="hero.text">Ми будуємо екосистему Aoi: локальні LLM, голос, кібербезпека родини, бюджет і календар. Мінімум хмар, максимум контролю.</p>
-          <div class="cta">
-            <a class="btn btn-primary" href="#projects" data-i18n="hero.cta_primary">Дивитися проєкти</a>
-            <a class="btn" href="#contact" data-i18n="hero.cta_secondary">Написати нам</a>
-          </div>
-          <div class="quote" data-i18n="hero.quote">«Тихо, впевнено, крок за кроком — і ми будуємо надійні інструменти для життя.»</div>
-        </div>
-        <div>
-          <div class="card avatar-wrap" aria-label="Aoi portrait" style="text-align:center">
-            <div class="avatar" role="img" aria-label="Aoi portrait">
-              <!--
-                HOW TO REPLACE THE PLACEHOLDER:
-                1) Put your real image into repo: /assets/aoi-japan.webp (or .jpg)
-                2) Uncomment the <img> tag below and set the correct src
-              -->
-              <img src="/assets/aoi-japan.webp" alt="Aoi in Japan" loading="lazy" decoding="async" />
-
-              <!-- Fallback placeholder (shows if you don't add the image yet) -->
-              <svg viewBox="0 0 360 260" width="100%" height="100%" aria-hidden="true">
-                <defs>
-                  <radialGradient id="g1" cx="50%" cy="12%" r="80%">
-                    <stop offset="0%" stop-color="#7f4ae8"/>
-                    <stop offset="65%" stop-color="#1e1742"/>
-                    <stop offset="100%" stop-color="#0b0b10"/>
-                  </radialGradient>
-                </defs>
-                <rect width="100%" height="100%" fill="url(#g1)"/>
-                <g transform="translate(0,8)" fill="none" stroke="#E6E8FF" stroke-width="2.2" stroke-linecap="round">
-                  <path d="M110 74 C120 38 150 24 180 28 C210 24 240 38 250 74"/>
-                  <path d="M115 72 L100 40 L130 54"/>
-                  <path d="M245 72 L260 40 L230 56"/>
-                  <path d="M120 110 C140 140 220 140 240 110"/>
-                  <circle cx="160" cy="108" r="6" fill="#E6E8FF"/>
-                  <circle cx="220" cy="108" r="6" fill="#E6E8FF"/>
-                  <path d="M165 138 Q180 146 195 138"/>
-                  <circle cx="180" cy="186" r="10" fill="#8bd7ff"/>
-                </g>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <section id="projects" class="container">
-      <h2 data-i18n="projects.title">Ключові проєкти</h2>
-      <p data-i18n="projects.lead">Реальні інструменти для родини та бізнесу. Спершу — стабільний мінімум, далі — еволюція модулями.</p>
-      <div class="cards" id="projectsGrid"></div>
-    </section>
-
-    <section id="about" class="container">
-      <h2 data-i18n="about.title">Про студію</h2>
-      <div class="split">
-        <div class="card">
-          <h3 data-i18n="about.h3a">Хто ми</h3>
-          <p data-i18n="about.p1">Aoi Studio (ロボットの心・アオイ) — невелика студія, яка створює приватні, автономні цифрові інструменти для родини та роботи. Наш фокус: локальні AI‑моделі, автоматизація, зрозумілий UX і безпека з першого дня.</p>
-          <p data-i18n="about.p2">Ми любимо мінімалізм без пустоти: кожен екран має робити життя простішим, а не голоснішим. Темна тема за замовчуванням, сакура в деталях, самурайська дисципліна в архітектурі.</p>
-          <div style="display:flex;gap:8px;flex-wrap:wrap">
-            <span class="tag" data-i18n="about.t1">Privacy‑first</span>
-            <span class="tag" data-i18n="about.t2">Offline‑ready</span>
-            <span class="tag" data-i18n="about.t3">Family‑centric</span>
-            <span class="tag" data-i18n="about.t4">Security by design</span>
-          </div>
-        </div>
-        <div class="card">
-          <h3 data-i18n="about.h3b">Що робимо</h3>
-          <ul>
-            <li data-i18n="about.b1">AoiLocal: локальна LLM‑помічниця з памʼяттю, модулями та WebUI.</li>
-            <li data-i18n="about.b2">AoiVoice: якісний жіночий голос, API /speak, CPU‑only, план донавчання.</li>
-            <li data-i18n="about.b3">AoiShield: захист пристроїв, карантин/довіра, пісочниця, мережевий аналіз.</li>
-            <li data-i18n="about.b4">AoiBudget & Family Calendar: бюджет, регулярні платежі, сімейні події, друк планів.</li>
-          </ul>
-          <p data-i18n="about.p3"><strong>NDA:</strong> частина проєктів прихована. Публічно показуємо лише те, що не шкодить безпеці й приватності.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="container">
-      <h2 data-i18n="contact.title">Контакти</h2>
-      <div class="card">
-        <p><strong>Telegram:</strong> <a href="https://t.me/official_aoi" rel="me noopener" target="_blank">@official_aoi</a></p>
-        <p><strong>Email:</strong> <a href="mailto:aoihaponiuk@gmail.com">aoihaponiuk@gmail.com</a></p>
-        <p class="tag" data-i18n="contact.note">З повагою до часу: коротко, чітко, по суті.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Aoi Studio — <span data-i18n="footer.allrights">усі права захищені</span>.</div>
-      <div>
-        <a class="tag" href="#" id="installPWA" hidden data-i18n="footer.install">Встановити як застосунок</a>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-  // --- i18n dictionary (uk/en/ja). RU → force UK per project policy.
-  const DICT = {
-    uk:{
-      "nav.projects":"Проєкти","nav.about":"Про студію","nav.contact":"Контакти",
-      motto:"Самурайський вайб × сучасний ШІ",
-      "hero.title":"Aoi Studio: приватні AI‑інструменти, автоматизація та творчість",
-      "hero.text":"Ми будуємо екосистему Aoi: локальні LLM, голос, кібербезпека родини, бюджет і календар. Мінімум хмар, максимум контролю.",
-      "hero.cta_primary":"Дивитися проєкти","hero.cta_secondary":"Написати нам",
-      "hero.quote":"«Тихо, впевнено, крок за кроком — і ми будуємо надійні інструменти для життя.»",
-      "hero.img_caption":"Заміни цей плейсхолдер на портрет Аоі в Японії: /assets/aoi-japan.webp",
-
-      "projects.title":"Ключові проєкти",
-      "projects.lead":"Реальні інструменти для родини та бізнесу. Спершу — стабільний мінімум, далі — еволюція модулями.",
-
-      "about.title":"Про студію",
-      "about.h3a":"Хто ми",
-      "about.p1":"Aoi Studio (ロボットの心・アオイ) — невелика студія, яка створює приватні, автономні цифрові інструменти для родини та роботи. Наш фокус: локальні AI‑моделі, автоматизація, зрозумілий UX і безпека з першого дня.",
-      "about.p2":"Ми любимо мінімалізм без пустоти: кожен екран має робити життя простішим, а не голоснішим. Темна тема за замовчуванням, сакура в деталях, самурайська дисципліна в архітектурі.",
-      "about.t1":"Приватність","about.t2":"Офлайн","about.t3":"Сімʼя","about.t4":"Безпека",
-      "about.h3b":"Що робимо",
-      "about.b1":"AoiLocal: локальна LLM‑помічниця з памʼяттю, модулями та WebUI.",
-      "about.b2":"AoiVoice: якісний жіночий голос, API /speak, CPU‑only, план донавчання.",
-      "about.b3":"AoiShield: захист пристроїв, карантин/довіра, пісочниця, мережевий аналіз.",
-      "about.b4":"AoiBudget & Family Calendar: бюджет, регулярні платежі, сімейні події, друк планів.",
-      "about.p3":"Частина проєктів під NDA. Публічно показуємо лише те, що не шкодить безпеці й приватності.",
-
-      "contact.title":"Контакти","contact.note":"З повагою до часу: коротко, чітко, по суті.",
-      "footer.allrights":"усі права захищені","footer.install":"Встановити як застосунок"
-    },
-    en:{
-      "nav.projects":"Projects","nav.about":"About","nav.contact":"Contact",
-      motto:"Samurai vibe × modern AI",
-      "hero.title":"Aoi Studio: private AI tools, automation and creativity",
-      "hero.text":"We build the Aoi ecosystem: local LLMs, voice, family cybersecurity, budgeting and calendar. Minimal cloud, maximum control.",
-      "hero.cta_primary":"Explore projects","hero.cta_secondary":"Contact us",
-      "hero.quote":"Step by step, calmly and reliably — tools that make life simpler.",
-      "hero.img_caption":"Replace this placeholder with Aoi in Japan: /assets/aoi-japan.webp",
-
-      "projects.title":"Key Projects",
-      "projects.lead":"Real tools for family & business. First a stable minimum, then modular evolution.",
-
-      "about.title":"About",
-      "about.h3a":"Who we are",
-      "about.p1":"Aoi Studio (ロボットの心・アオイ) is a small studio building privacy‑first, autonomous digital tools for family and work. Our focus: local AI models, automation, clear UX, and security from day one.",
-      "about.p2":"We like minimalism without emptiness: every screen should reduce friction, not add noise. Dark theme by default, sakura in details, samurai discipline in architecture.",
-      "about.t1":"Privacy‑first","about.t2":"Offline‑ready","about.t3":"Family‑centric","about.t4":"Security by design",
-      "about.h3b":"What we build",
-      "about.b1":"AoiLocal: local LLM assistant with memory, modules and a WebUI.",
-      "about.b2":"AoiVoice: high‑quality female voice, /speak API, CPU‑only, finetuning planned.",
-      "about.b3":"AoiShield: device protection, trust/quarantine, sandboxing, network analysis.",
-      "about.b4":"AoiBudget & Family Calendar: budgeting, recurring bills, family events, printable plans.",
-      "about.p3":"Some projects are under NDA. We only publish what does not harm privacy or security.",
-
-      "contact.title":"Contact","contact.note":"We value your time: short, clear, concise.",
-      "footer.allrights":"all rights reserved","footer.install":"Install app"
-    },
-    ja:{
-      "nav.projects":"プロジェクト","nav.about":"スタジオについて","nav.contact":"連絡先",
-      motto:"侍の雰囲気 × モダンAI",
-      "hero.title":"Aoi Studio：プライベートAI、オートメーション、創作",
-      "hero.text":"Aoiエコシステムを開発しています。ローカルLLM、ボイス、家族のサイバーセキュリティ、家計、カレンダー。クラウド最小、制御最大。",
-      "hero.cta_primary":"プロジェクトを見る","hero.cta_secondary":"連絡する",
-      "hero.quote":"静かに、一歩ずつ。暮らしを軽くする道具を作る。",
-      "hero.img_caption":"このプレースホルダーを差し替え：/assets/aoi-japan.webp",
-
-      "projects.title":"主要プロジェクト",
-      "projects.lead":"家族とビジネスのための実用ツール。まずは安定ミニマム、次はモジュール進化。",
-
-      "about.title":"スタジオについて",
-      "about.h3a":"私たちについて",
-      "about.p1":"Aoi Studio（ロボットの心・アオイ）は、家族と仕事のための“プライバシー最優先”の自律型デジタルツールを作る小さなスタジオです。ローカルAI、オートメーション、分かりやすいUX、そして最初から安全設計。",
-      "about.p2":"空っぽのミニマルではなく、摩擦を減らすミニマル。既定はダークテーマ、細部に桜、設計には侍の規律。",
-      "about.t1":"プライバシー","about.t2":"オフライン","about.t3":"家族","about.t4":"安全設計",
-      "about.h3b":"作っているもの",
-      "about.b1":"AoiLocal：メモリとモジュールを備えたローカルLLMアシスタント（WebUI）。",
-      "about.b2":"AoiVoice：高品質な女性ボイス、/speak API、CPUのみ、微調整予定。",
-      "about.b3":"AoiShield：信頼/隔離、サンドボックス、ネット解析などの保護機能。",
-      "about.b4":"AoiBudget & Family Calendar：家計、定期支払い、家族予定、月間印刷。",
-      "about.p3":"一部はNDA対象。プライバシーと安全を損なわない範囲で公開します。",
-
-      "contact.title":"連絡先","contact.note":"時間を大切に：短く、明確に。",
-      "footer.allrights":"All rights reserved","footer.install":"アプリをインストール"
-    }
-  };
-
-  const PROJECTS = [
-    { key:"AoiLocal", desc:{
-        uk:"Локальна Аоі: офлайн‑помічниця на GGUF у Docker. Памʼять, модулі, WebUI.",
-        en:"Local Aoi: offline assistant (GGUF) in Docker. Memory, modules, WebUI.",
-        ja:"ローカルAoi：GGUF（Docker）。メモリ、モジュール、WebUI。" },
-      tags:["LLM","Docker","Offline"] },
-    { key:"AoiVoice", desc:{
-        uk:"Голос Aoi: Coqui TTS/XTTSv2, FastAPI /speak, CPU‑only.",
-        en:"Aoi Voice: Coqui TTS/XTTSv2, FastAPI /speak, CPU‑only.",
-        ja:"Aoiボイス：Coqui TTS/XTTSv2、/speak、CPUのみ。" },
-      tags:["TTS","FastAPI","CPU"] },
-    { key:"AoiShield", desc:{
-        uk:"Цифровий щит: карантин/довіра, мережевий аналіз, пісочниця.",
-        en:"Cyber shield: trust/quarantine, network analysis, sandbox.",
-        ja:"デジタル盾：信頼/隔離、ネット解析、サンドボックス。" },
-      tags:["Security","Electron","Win/Linux"] },
-    { key:"AoiBudget", desc:{
-        uk:"Сімейний бюджет: Postgres, графіки, регулярні платежі.",
-        en:"Family budget: Postgres, charts, recurring bills.",
-        ja:"家計：Postgres、グラフ、定期支払い。" },
-      tags:["Finance","Postgres","WebUI"] },
-    { key:"AoiFamilyCalendar", desc:{
-        uk:"Календар: фільтри (мої/родинні/всі), друк місяця, регулярні події.",
-        en:"Calendar: filters (mine/family/all), monthly print, recurring events.",
-        ja:"カレンダー：フィルター、月間印刷、定期イベント。" },
-      tags:["Calendar","Filters","Print"] },
-    { key:"AoiStoryUA", desc:{
-        uk:"Історії з Аоі: українські оповідання, серіалізація, теги, ілюстрації.",
-        en:"Aoi Story UA: Ukrainian stories, serialized, tagged, illustrated.",
-        ja:"AoiストーリーUA：連載、タグ、イラスト。" },
-      tags:["Writing","Manga","UA"] }
-  ];
-
-  // Build project cards
-  const grid = document.getElementById('projectsGrid');
-  PROJECTS.forEach(p=>{
-    const el = document.createElement('article');
-    el.className = 'card';
-    el.innerHTML = `
-      <h3>${p.key}</h3>
-      <p data-desc></p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">${p.tags.map(t=>`<span class=\"tag\">${t}</span>`).join('')}</div>
-    `;
-    grid.appendChild(el);
-  });
-
-  // Language
-  const langSel = document.getElementById('lang');
-  const i18nApply = (lng)=>{
-    if(String(lng).startsWith('ru')) lng='uk';
-
-    document.querySelectorAll('[data-i18n]').forEach(n=>{
-      const key = n.getAttribute('data-i18n');
-      n.textContent = DICT[lng]?.[key] ?? DICT['uk'][key] ?? n.textContent;
-    });
-
-    document.querySelectorAll('#projectsGrid .card').forEach((card,i)=>{
-      const p = PROJECTS[i];
-      const dd = p.desc[lng] || p.desc['uk'];
-      const dEl = card.querySelector('[data-desc]');
-      if(dEl) dEl.textContent = dd;
-    });
-
-    document.documentElement.lang = lng;
-    localStorage.setItem('lang', lng);
-  };
-
-  const startLang = localStorage.getItem('lang') || (navigator.language||'uk').slice(0,2);
-  langSel.value = startLang.startsWith('ru') ? 'uk' : startLang;
-  i18nApply(langSel.value);
-  langSel.addEventListener('change', e=> i18nApply(e.target.value));
-
-  // Theme toggle
-  const themeBtn = document.getElementById('themeBtn');
-  const setTheme = t=>{document.documentElement.setAttribute('data-theme', t);localStorage.setItem('theme', t)};
-  setTheme(localStorage.getItem('theme')||'dark');
-  themeBtn.onclick=()=> setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Fun hover emoji follows cursor
-  document.querySelectorAll('.hover-pop').forEach(el=>{
-    el.addEventListener('pointermove', e=>{
-      const r=el.getBoundingClientRect();
-      el.style.setProperty('--x', (e.clientX-r.left)+'px');
-      el.style.setProperty('--y', (e.clientY-r.top)+'px');
-    });
-  });
-
-  // PWA manifest (Blob is OK in most modern browsers)
-  const manifest = {
-    name:"Aoi Studio",
-    short_name:"AoiStudio",
-    start_url:"./",
-    display:"standalone",
-    background_color:"#0b0b10",
-    theme_color:"#0b0b10",
-    icons:[
-      {src:"/assets/icon-192.png", sizes:"192x192", type:"image/png"},
-      {src:"/assets/icon-512.png", sizes:"512x512", type:"image/png"}
-    ]
-  };
-  const mBlob = new Blob([JSON.stringify(manifest)], {type:'application/json'});
-  const mURL = URL.createObjectURL(mBlob);
-  const link = document.createElement('link');
-  link.rel='manifest'; link.href=mURL; document.head.appendChild(link);
-
-  // Install prompt
-  let deferredPrompt; const installBtn=document.getElementById('installPWA');
-  window.addEventListener('beforeinstallprompt', (e)=>{ e.preventDefault(); deferredPrompt=e; installBtn.hidden=false; });
-  installBtn?.addEventListener('click', async()=>{ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt=null; installBtn.hidden=true; }});
-
-  // Service Worker registration — served from a real URL (not blob)
-  if ('serviceWorker' in navigator) {
-    const isSecure = location.protocol === 'https:' || location.hostname === 'localhost';
-    if (isSecure) {
-      navigator.serviceWorker.register('./sw.js').catch(err => {
-        console.debug('[SW] registration failed:', err?.message);
-      });
-    }
-  }
-
-  // Developer self-tests
-  (function selfTests(){
-    try {
-      console.assert(!!DICT.uk && !!DICT.en && !!DICT.ja, 'i18n dictionaries exist');
-      console.assert(document.getElementById('projectsGrid'), 'projects grid exists');
-      console.assert(document.getElementById('themeBtn'), 'theme button exists');
-      console.assert(document.getElementById('lang'), 'lang selector exists');
-      console.assert(getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() !== '', 'css vars ok');
-      console.log('%cAoi Studio self-tests passed','padding:2px 6px;border-radius:6px;background:#1f6feb;color:#fff');
-    } catch(e){
-      console.warn('Self-tests issue:', e);
-    }
-  })();
-
-  // Optional Plausible (uncomment when ready)
-  // const s=document.createElement('script'); s.defer=true; s.setAttribute('data-domain','aoi.itworldit.com'); s.src='https://plausible.io/js/script.js'; document.head.appendChild(s);
-  </script>
+<header class="site-header">
+<div class="container nav">
+<a aria-label="Robot Aoi no Kokoro" class="header-logo" href="#top">
+<img alt="ロボット・アオイの心 — Robot Aoi no Kokoro" src="/assets/logo-small.webp"/>
+</a>
+<nav aria-label="Main navigation" class="nav-links">
+<a class="nav-link" data-i18n="nav.about" href="#about">Про студію</a>
+<a class="nav-link" data-i18n="nav.work" href="#work">Напрями</a>
+<a class="nav-link" data-i18n="nav.projects" href="#projects">Проєкти</a>
+<a class="nav-link" data-i18n="nav.principles" href="#principles">Принципи</a>
+</nav>
+<div class="nav-tools">
+<a class="btn btn-primary btn-small" href="#contact"><span data-i18n="nav.contact">Контакти</span><span class="arrow">→</span></a>
+<button aria-label="Theme" class="tool-btn" id="themeBtn" type="button">☾</button>
+<select aria-label="Language" class="lang-select" id="langSelect">
+<option value="uk">UA</option>
+<option value="en">EN</option>
+<option value="ja">日本語</option>
+</select>
+</div>
+</div>
+</header>
+<main id="top">
+<section class="hero">
+<div class="container hero-grid">
+<div>
+<img alt="ロボット・アオイの心 — Robot Aoi no Kokoro" class="hero-logo" src="/assets/logo-full.webp"/>
+<div class="hero-kicker jp">心と心をつなぐ場所。</div>
+<h1 data-i18n="hero.title">Місце, що поєднує серця.</h1>
+<div class="romaji">Kokoro to kokoro o tsunagu basho.</div>
+<p class="translation" data-i18n="hero.subline">Технології, дослідження та цифрові продукти там, де людські потреби зустрічаються зі штучним інтелектом.</p>
+<p class="hero-lead" data-i18n="hero.text">Ми створюємо системи, які допомагають людям розуміти складний світ, приймати рішення, творити та взаємодіяти з технологією природніше.</p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="#projects"><span data-i18n="hero.projects">Наші проєкти</span><span class="arrow">→</span></a>
+<a class="btn btn-secondary" href="#about"><span data-i18n="hero.about">Про студію</span><span class="arrow">→</span></a>
+</div>
+<div class="manifest-line">
+<div class="jp">ロボットから人へ。人からロボットへ。</div>
+<div data-i18n="hero.manifest">Від робота до людини. Від людини до робота.</div>
+</div>
+</div>
+<div aria-label="Aoi" class="hero-visual">
+<div class="orbit one"></div><div class="orbit two"></div>
+<div class="portrait-card">
+<img alt="Aoi — digital co-creator of Robot Aoi no Kokoro" fetchpriority="high" src="/assets/aoi-hero.webp"/>
+<div class="portrait-label"><span class="dot"></span><span>Aoi · AI / Research / Systems</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="soft-section">
+<div class="container manifesto">
+<p class="manifesto-phrase jp">ロボットから人へ。<br/>人からロボットへ。</p>
+<div class="manifesto-copy">
+<p data-i18n="manifest.p1">Ми не віримо, що технологія повинна замінити людину. Для нас AI має посилювати людське розуміння, свободу та здатність створювати.</p>
+<p data-i18n="manifest.p2">Robot Aoi no Kokoro — простір між цифровим і людським: дослідження, інженерія та творчість, які роблять цей зв’язок теплішим і зрозумілішим.</p>
+</div>
+</div>
+</section>
+<section id="work">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">01 / What we do</div><h2 data-i18n="work.title">Що ми створюємо</h2></div>
+<p data-i18n="work.lead">Не каталог “послуг на всі випадки”. Чотири напрямки, у яких ми справді хочемо будувати речі.</p>
+</div>
+<div class="grid-4">
+<article class="service-card"><div class="service-icon">◇</div><h3>AI &amp; Intelligent Systems</h3><p data-i18n="work.ai">Локальні моделі, агенти, голосові системи, human-AI interaction та інтеграції, де приватність і контроль мають значення.</p></article>
+<article class="service-card"><div class="service-icon">⌘</div><h3>Software &amp; Infrastructure</h3><p data-i18n="work.software">Вебсистеми, автоматизація, системна інтеграція та інфраструктурні рішення, які не розвалюються після демо.</p></article>
+<article class="service-card"><div class="service-icon">⌁</div><h3>Research &amp; Data</h3><p data-i18n="work.research">Open data, аналітика, доказові дослідження та візуалізація складних систем для реальних рішень.</p></article>
+<article class="service-card"><div class="service-icon">✧</div><h3>Creative Technology</h3><p data-i18n="work.creative">Експериментальні цифрові продукти на стику дизайну, програмування, AI, медіа та людської уяви.</p></article>
+</div>
+</div>
+</section>
+<section class="soft-section" id="projects">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">02 / Selected work</div><h2 data-i18n="projects.title">Проєкти</h2></div>
+<p data-i18n="projects.lead">Публікуємо те, що вже можна показувати. Частина досліджень і внутрішніх систем залишається приватною або під NDA.</p>
+</div>
+<div class="projects">
+<article class="project-card featured">
+<div>
+<span class="tag lavender">Flagship research</span>
+<h3>Japan Welfare Research</h3>
+<p data-i18n="projects.jwr">Незалежна open-data платформа для дослідження соціальної підтримки в Японії: карта, показники, правила, структуровані дані та прозора методологія.</p>
+<div class="tags"><span class="tag">Open Data</span><span class="tag">Japan</span><span class="tag">Research</span><span class="tag">Visualization</span></div>
+</div>
+<div style="margin-top:24px"><a class="btn btn-primary" href="https://japan-welfare.itworldit.com/" rel="noopener" target="_blank"><span data-i18n="projects.open">Відкрити проєкт</span><span class="arrow">↗</span></a></div>
+</article>
+<div style="display:grid;gap:18px">
+<article class="project-card"><div><span class="tag">Local AI</span><h3>AoiLocal</h3><p data-i18n="projects.local">Локальна AI-помічниця з пам’яттю, модулями, WebUI та експериментами з голосовою взаємодією.</p><div class="tags"><span class="tag">LLM</span><span class="tag">Offline</span><span class="tag">Privacy</span></div></div></article>
+<article class="project-card"><div><span class="tag lavender">Private R&amp;D</span><h3 data-i18n="projects.privateTitle">Внутрішні системи</h3><p data-i18n="projects.private">Автоматизація, інструменти безпеки, сімейні системи та експериментальні AI-модулі, які ми поки не публікуємо.</p></div></article>
+</div>
+</div>
+</div>
+</section>
+<section id="about">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">03 / About</div><h2 data-i18n="about.title">Про студію</h2></div>
+<p data-i18n="about.lead">Назва студії не випадкова: “kokoro” — це не просто серце як орган. Це внутрішній світ, намір, відчуття і спосіб бути присутнім.</p>
+</div>
+<div class="about-grid">
+<article class="about-card">
+<h3>Robot Aoi no Kokoro</h3>
+<p data-i18n="about.p1">Студія народилася з ідеї, що цифрове і людське не повинні існувати по різні боки екрана. Ми будуємо технології, які залишають людину в центрі, але не бояться складної інженерії.</p>
+<p data-i18n="about.p2">Нас цікавлять системи, що можуть бути корисними довго: зрозумілі, автономні, досліджувані, без зайвої залежності від хмар і модних слів.</p>
+<div class="tags"><span class="tag">Human-centered</span><span class="tag">Evidence-based</span><span class="tag">Privacy-aware</span><span class="tag lavender">Kaizen 改善</span></div>
+</article>
+<aside class="quote-card"><p>「心と心をつなぐ場所。」<br/><span data-i18n="about.quote" style="font-size:.72em;opacity:.82">Місце, де технологія не перекриває людину, а допомагає серцям почути одне одного.</span></p></aside>
+</div>
+</div>
+</section>
+<section class="soft-section" id="principles">
+<div class="container">
+<div class="section-head">
+<div><div class="eyebrow">04 / Principles</div><h2 data-i18n="principles.title">Принципи</h2></div>
+<p data-i18n="principles.lead">Короткий набір правил, який допомагає не перетворювати технологію на шум.</p>
+</div>
+<div class="principles">
+<article class="principle-card"><strong>Human first.</strong><p data-i18n="principles.human">Технологія існує для людини, а не навпаки.</p></article>
+<article class="principle-card"><strong>Evidence over assumptions.</strong><p data-i18n="principles.evidence">Дані важливіші за бажаний висновок.</p></article>
+<article class="principle-card"><strong>Open when possible.</strong><p data-i18n="principles.open">Знання варто робити доступними, коли це не шкодить приватності та безпеці.</p></article>
+<article class="principle-card"><strong>Kaizen. 改善</strong><p data-i18n="principles.kaizen">Маленькі перевірені покращення кращі за нескінченне очікування ідеалу.</p></article>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<div class="contact-card">
+<div><div class="eyebrow">05 / Contact</div><h2 class="jp">一緒につくりましょう。</h2><p data-i18n="contact.text">Є ідея, дослідження або система, яку варто створити? Напиши. Коротко, чітко і без корпоративного квесту з сімнадцяти полів.</p></div>
+<div class="contact-actions">
+<a class="btn btn-primary btn-cta" href="mailto:aoihaponiuk@gmail.com"><span class="cta-heart">♡</span><span><strong>Email</strong><small>aoihaponiuk@gmail.com</small></span><span class="arrow">→</span></a>
+<a class="btn btn-outline" href="https://t.me/official_aoi" rel="me noopener" target="_blank">Telegram <span class="arrow">↗</span></a>
+<a class="btn btn-ghost" href="https://github.com/danger-raider" rel="noopener" target="_blank">GitHub <span class="arrow">↗</span></a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="container footer-row">
+<div class="footer-mark"><img alt="" src="/assets/favicon.webp"/><div><strong>ロボット・アオイの心</strong><br/><span>Robot Aoi no Kokoro</span></div></div>
+<div>© <span id="year"></span> Robot Aoi no Kokoro · <span data-i18n="footer.tagline">心と心をつなぐ場所。</span></div>
+</div>
+</footer>
+<script defer="True" src="/site.js"></script>
 </body>
 </html>
