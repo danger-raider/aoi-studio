@@ -1,8 +1,10 @@
 // Robot Aoi no Kokoro — minimal offline cache
-const CACHE_NAME = 'aoi-kokoro-v1.0.0';
+const CACHE_NAME = 'aoi-kokoro-v1.0.1';
 const ASSETS = [
   '/',
   '/index.html',
+  '/styles.css',
+  '/site.js',
   '/site.webmanifest',
   '/assets/favicon.webp',
   '/assets/logo-small.webp',
