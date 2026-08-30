@@ -1,0 +1,11 @@
+{
+  "name": "Robot Aoi no Kokoro",
+  "short_name": "Aoi no Kokoro",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7fbff",
+  "theme_color": "#0B3D6D",
+  "icons": [
+    {"src":"/assets/favicon.webp","sizes":"192x192","type":"image/webp","purpose":"any maskable"}
+  ]
+}
