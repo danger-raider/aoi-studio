@@ -1,5 +1,5 @@
-const CACHE_NAME='aoi-studio-brand-v2';
-const ASSETS=['/','/index.html','/styles.css','/site.js','/site.webmanifest','/sw.js','/assets/logo-small.webp','/assets/logo-full.webp','/assets/favicon.webp','/assets/aoi-hero.webp'];
-self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)))});
-self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.map(key=>key!==CACHE_NAME?caches.delete(key):null));await self.clients.claim()})())});
-self.addEventListener('fetch',event=>{if(event.request.method!=='GET')return;event.respondWith((async()=>{const cached=await caches.match(event.request);if(cached)return cached;try{const fresh=await fetch(event.request);if(fresh?.ok&&fresh.type==='basic'){const cache=await caches.open(CACHE_NAME);cache.put(event.request,fresh.clone())}return fresh}catch(err){return cached||Response.error()}})())});
+const CACHE_NAME='aoi-studio-brand-v3';
+const ASSETS=['/','/index.html','/styles.css?v=3','/site.js?v=3','/assets/aoi-hero.webp?v=3','/assets/favicon.webp','/site.webmanifest'];
+self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)).catch(()=>{}));});
+self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim();})());});
+self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET')return;event.respondWith((async()=>{try{const fresh=await fetch(req);if(fresh&&fresh.ok&&new URL(req.url).origin===self.location.origin){const cache=await caches.open(CACHE_NAME);cache.put(req,fresh.clone());}return fresh;}catch(_){return (await caches.match(req))||(await caches.match('/index.html'));}})());});
