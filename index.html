@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#020b17" />
+  <meta name="theme-color" content="#020914" />
   <meta name="description" content="Robot Aoi no Kokoro — AI, software engineering, research and human-centered technology." />
   <meta property="og:title" content="ロボット・アオイの心 — Robot Aoi no Kokoro" />
   <meta property="og:description" content="心と心をつなぐ場所。 Місце, що поєднує серця." />
@@ -16,30 +16,126 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&family=Noto+Serif:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=5" />
+  <link rel="stylesheet" href="/styles.css?v=6" />
 </head>
 <body>
-  <header class="site-header" id="top">
-    <div class="shell header-row">
-      <a class="brand" href="#top" aria-label="Robot Aoi no Kokoro"><img src="/assets/logo-neon.webp" alt="ロボット・アオイの心 — Robot Aoi no Kokoro" /></a>
-      <nav class="desktop-nav" aria-label="Main navigation"><a class="nav-link active" href="#top" data-i18n="nav.home">Головна</a><a class="nav-link" href="#about" data-i18n="nav.about">Про студію</a><a class="nav-link" href="#work" data-i18n="nav.work">Напрями</a><a class="nav-link" href="#projects" data-i18n="nav.projects">Проєкти</a><a class="nav-link" href="#principles" data-i18n="nav.principles">Принципи</a><a class="nav-link" href="#contact" data-i18n="nav.contact">Контакти</a></nav>
-      <div class="header-tools"><div class="lang-switcher" id="langSwitcher"><button class="lang-button" id="langButton" type="button" aria-expanded="false" aria-haspopup="listbox"><span class="globe">◎</span><span id="langShort">UA</span><span class="chevron">⌄</span></button><div class="lang-list" id="langList" role="listbox" aria-label="Language"><button type="button" data-lang="uk"><b>UA</b><span>Українська</span></button><button type="button" data-lang="en"><b>EN</b><span>English</span></button><button type="button" data-lang="ja"><b>JP</b><span>日本語</span></button></div></div><a class="neon-button small" href="#contact"><span data-i18n="nav.contact">Контакти</span><span>→</span></a><button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu"><span></span><span></span></button></div>
+<header class="site-header" id="top">
+  <div class="shell header-inner">
+    <a class="brand" href="#top" aria-label="Robot Aoi no Kokoro">
+      <img src="/assets/logo-neon.webp" alt="ロボット・アオイの心 — Robot Aoi no Kokoro" />
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#top" data-i18n="nav.home">Головна</a>
+      <a href="#about" data-i18n="nav.about">Про студію</a>
+      <a href="#projects" data-i18n="nav.projects">Проєкти</a>
+      <a href="#work" data-i18n="nav.work">Напрями</a>
+      <a href="#principles" data-i18n="nav.principles">Принципи</a>
+      <a href="#contact" data-i18n="nav.contact">Контакти</a>
+    </nav>
+    <div class="header-actions">
+      <div class="lang-picker">
+        <button class="lang-trigger" id="langTrigger" type="button" aria-haspopup="listbox" aria-expanded="false"><span>◎</span><b id="langCode">UA</b><i>⌄</i></button>
+        <div class="lang-menu" id="langMenu" role="listbox" hidden>
+          <button type="button" data-lang="uk"><b>UA</b><span>Українська</span></button>
+          <button type="button" data-lang="en"><b>EN</b><span>English</span></button>
+          <button type="button" data-lang="ja"><b>JP</b><span>日本語</span></button>
+        </div>
+      </div>
+      <a class="neon-btn header-cta" href="#contact"><span data-i18n="nav.contact">Контакти</span><span>→</span></a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
     </div>
-    <div class="mobile-menu" id="mobileMenu" hidden><nav><a href="#top" data-i18n="nav.home">Головна</a><a href="#about" data-i18n="nav.about">Про студію</a><a href="#work" data-i18n="nav.work">Напрями</a><a href="#projects" data-i18n="nav.projects">Проєкти</a><a href="#principles" data-i18n="nav.principles">Принципи</a><a href="#contact" data-i18n="nav.contact">Контакти</a></nav><div class="mobile-language"><button data-mobile-lang="uk">UA</button><button data-mobile-lang="en">EN</button><button data-mobile-lang="ja">日本語</button></div></div>
-  </header>
-  <main>
-    <section class="hero neon-grid-bg">
-      <div class="hero-circuit" aria-hidden="true"><svg viewBox="0 0 1600 620" preserveAspectRatio="none"><defs><filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g class="network-lines" filter="url(#glow)"><path d="M70 410 C250 300 370 390 540 285 S850 80 1060 185 1375 465 1550 300"/><path d="M20 520 C250 460 380 505 590 380 S875 180 1080 280 1350 390 1580 245"/><path d="M165 150 C350 115 505 180 660 235 S860 305 1040 225 1280 90 1520 125"/><path d="M500 610 C610 450 770 410 910 420 S1170 510 1540 430"/></g><g class="network-dots"><circle cx="535" cy="286" r="4"/><circle cx="675" cy="235" r="5"/><circle cx="860" cy="300" r="4"/><circle cx="1045" cy="225" r="5"/><circle cx="1180" cy="310" r="4"/><circle cx="1360" cy="390" r="4"/><circle cx="1515" cy="125" r="4"/></g></svg></div><div class="hero-digital-rain" aria-hidden="true"></div>
-      <div class="shell hero-inner"><div class="hero-copy"><div class="section-label hero-label">01 / HOME</div><div class="hero-kicker jp">心と心をつなぐ場所。</div><h1 class="jp">ロボット・アオイの心</h1><div class="hero-latin">Robot Aoi no Kokoro</div><div class="hero-tagline jp">心と心をつなぐ場所。</div><div class="hero-romaji">Kokoro to kokoro o tsunagu basho.</div><p class="hero-translation" data-i18n="hero.translation">Місце, що поєднує серця.</p><p class="hero-summary" data-i18n="hero.summary">Ми створюємо технології, дослідження та цифрові продукти там, де людські потреби зустрічаються зі штучним інтелектом.</p><div class="hero-actions"><a class="neon-button" href="#projects"><span data-i18n="hero.projects">Наші проєкти</span><span>→</span></a><a class="outline-button" href="#about"><span data-i18n="hero.about">Про студію</span><span>→</span></a></div><div class="hero-manifest"><strong class="jp">ロボットから人へ。人からロボットへ。</strong><span data-i18n="manifest.translation">Від робота до людини. Від людини до робота.</span></div></div>
-      <div class="hero-art" aria-label="Aoi"><div class="aoi-halo"></div><img class="aoi-portrait" src="/assets/aoi-hero-correct.webp" alt="Aoi — digital co-creator of Robot Aoi no Kokoro" fetchpriority="high" /><div class="aoi-badge"><i></i><b>Aoi</b><span>AI / Research / Systems</span></div><aside class="feature-rail" aria-label="Studio focus"><div class="rail-line"></div><div class="rail-item"><span class="rail-icon">⌘</span><div><b>AI RESEARCH</b><small>探索と進化</small></div></div><div class="rail-item"><span class="rail-icon">◇</span><div><b>OPEN DATA</b><small>知識をひらく</small></div></div><div class="rail-item"><span class="rail-icon">人</span><div><b>HUMAN-AI</b><small>共に創る未来</small></div></div></aside></div></div><div class="circuit-edge circuit-edge-left"></div><div class="circuit-edge circuit-edge-right"></div>
-    </section>
-    <section class="manifesto section-band" id="manifesto"><div class="shell manifesto-grid"><div class="section-title-block"><div class="section-label">02 / MANIFESTO</div><h2 class="jp">ロボットから人へ。<br>人からロボットへ。</h2><p class="section-translation" data-i18n="manifest.translation">Від робота до людини.<br>Від людини до робота.</p></div><div class="manifesto-copy"><p data-i18n="manifest.p1">Ми віримо, що технологія повинна підсилювати людину там, де потрібні емпатія, творчість і глибоке розуміння.</p><p data-i18n="manifest.p2">Ми будуємо системи, які допомагають людям розуміти складний світ, приймати рішення, створювати та взаємодіяти з цифровими системами природніше.</p><p class="accent-line" data-i18n="manifest.p3">Технології — це не мета. Це міст між людьми, і саме в цьому сенсі вони стають по-справжньому цінними.</p></div><div class="kokoro-diagram" aria-label="Human and robot connected through kokoro"><span class="kokoro-side left">人間</span><span class="kokoro-side right">ロボット</span><i class="orbit o1"></i><i class="orbit o2"></i><i class="orbit o3"></i><div class="kokoro-core">心</div></div></div></section>
-    <section class="work section-band" id="work"><div class="shell"><div class="section-head compact"><div class="section-title-block narrow"><div class="section-label">03 / WHAT WE BUILD</div><h2 class="jp">私たちがつくるもの</h2><p class="cyan" data-i18n="work.subtitle">Що ми створюємо</p></div><p data-i18n="work.lead">Наші рішення народжуються на перетині технологій, досліджень, креативності та потреб людей.</p><a class="text-link" href="#projects"><span data-i18n="work.all">Усі напрями</span><span>→</span></a></div><div class="work-grid"><a class="work-card interactive-card card-ai" href="#projects"><span class="work-icon">◉</span><span class="work-no">01</span><h3>AI &amp; Intelligent Systems</h3><p data-i18n="work.ai">ШІ-системи, локальні моделі, агенти, інтеграції, human-AI interaction.</p><span class="corner-arrow">→</span></a><a class="work-card interactive-card card-code" href="#projects"><span class="work-icon">&lt;/&gt;</span><span class="work-no">02</span><h3>Software &amp; Infrastructure</h3><p data-i18n="work.software">Вебсистеми, автоматизація, системна інтеграція, інфраструктурні рішення.</p><span class="corner-arrow">→</span></a><a class="work-card interactive-card card-data" href="#projects"><span class="work-icon">◎</span><span class="work-no">03</span><h3>Research &amp; Data</h3><p data-i18n="work.research">Дослідження, open data, аналітика, візуалізація складних даних.</p><span class="corner-arrow">→</span></a><a class="work-card interactive-card card-creative" href="#projects"><span class="work-icon">✦</span><span class="work-no">04</span><h3>Creative Technology</h3><p data-i18n="work.creative">Експериментальні цифрові продукти на стику дизайну, програмування, AI та медіа.</p><span class="corner-arrow">→</span></a></div></div></section>
-    <section class="projects section-band" id="projects"><div class="shell"><div class="projects-layout"><div class="section-title-block project-title"><div class="section-label">04 / PROJECTS</div><h2 class="jp">プロジェクト</h2><p class="cyan" data-i18n="projects.subtitle">Проєкти</p></div><div class="project-grid"><a class="project-card interactive-card project-jwr" href="https://japan-welfare.itworldit.com/" target="_blank" rel="noopener"><div class="project-shade"></div><div class="project-content"><h3>Japan Welfare Research</h3><p data-i18n="projects.jwr">Незалежна open-data дослідницька платформа</p><span class="round-arrow">→</span></div></a><button class="project-card interactive-card project-aoi" type="button" data-project-modal="aoi"><div class="project-shade"></div><div class="project-content"><h3>AoiLocal</h3><p data-i18n="projects.local">Локальна AI-помічниця</p><span class="round-arrow">→</span></div></button><button class="project-card interactive-card project-budget" type="button" data-project-modal="budget"><div class="project-shade"></div><div class="project-content"><h3>Aoi Family Budget</h3><p data-i18n="projects.budget">Особистий локальний бюджет</p><span class="round-arrow">→</span></div></button><a class="project-card interactive-card project-tax" href="https://aft.itworldit.com/" target="_blank" rel="noopener"><div class="project-shade"></div><div class="project-content"><h3>Aoi FOP Tax</h3><p data-i18n="projects.tax">Калькулятор податків для України</p><span class="round-arrow">→</span></div></a></div></div><div class="case-strip"><div class="case-strip-title"><span>SELECTED ENGINEERING CASES</span><small data-i18n="cases.safe">без чутливих деталей</small></div><div class="case-grid"><article class="case-card interactive-card"><span>01</span><h3 data-i18n="cases.minerTitle">Система раннього детекту майнерів</h3><p data-i18n="cases.miner">Моніторинг системи на ознаки майнерів та унеможливлення їх дії.</p></article><article class="case-card interactive-card"><span>02</span><h3 data-i18n="cases.securityTitle">Багатошаровий захист IT-інфраструктури</h3><p data-i18n="cases.security">Комплексна система захисту ресурсів компанії в умовах підвищеної секретності.</p></article><article class="case-card interactive-card"><span>03</span><h3 data-i18n="cases.docsTitle">Технічна документація великого IT-проєкту</h3><p data-i18n="cases.docs">Розробка документації в умовах мінімальної співпраці з персоналом.</p></article><article class="case-card interactive-card"><span>04</span><h3 data-i18n="cases.methodTitle">Методичні матеріали для програмного продукту</h3><p data-i18n="cases.method">Структуровані навчальні та методичні матеріали.</p></article><article class="case-card interactive-card"><span>05</span><h3 data-i18n="cases.learningTitle">Локальна ШІ-система для автонавчання</h3><p data-i18n="cases.learning">Впровадження локальної AI-системи у внутрішні бізнес-процеси.</p></article></div></div></div></section>
-    <section class="lower section-band"><div class="shell lower-grid"><article class="lower-panel" id="about"><div class="section-label">05 / ABOUT</div><h2 class="jp">スタジオについて</h2><p data-i18n="about.p1">Robot Aoi no Kokoro — студія AI, досліджень і цифрової інженерії, де людський контекст стоїть у центрі.</p><p data-i18n="about.p2">Робимо локальні AI-системи, open-data платформи та цифрові продукти з фокусом на людину, приватність і довгострокову цінність.</p><a class="text-link" href="#contact"><span data-i18n="about.more">Дізнатися більше</span><span>→</span></a></article><article class="lower-panel principles-panel" id="principles"><div class="section-label">06 / PRINCIPLES</div><h2 class="jp">私たちの原則</h2><div class="principle-grid"><div class="principle-card interactive-card"><span class="principle-icon">◎</span><b data-i18n="principles.humanTitle">Людина в центрі</b><small data-i18n="principles.human">Людина — центр кожного рішення.</small></div><div class="principle-card interactive-card"><span class="principle-icon">♢</span><b data-i18n="principles.evidenceTitle">Прозорість і довіра</b><small data-i18n="principles.evidence">Прозорість у даних, алгоритмах і діях.</small></div><div class="principle-card interactive-card"><span class="principle-icon">▢</span><b data-i18n="principles.privacyTitle">Приватність</b><small data-i18n="principles.privacy">Приватність і безпека — наш пріоритет.</small></div><div class="principle-card interactive-card"><span class="principle-icon">↗</span><b data-i18n="principles.kaizenTitle">Kaizen 改善</b><small data-i18n="principles.kaizen">Ми навчаємось, експериментуємо і стаємо кращими.</small></div></div></article><article class="lower-panel contact-panel" id="contact"><div class="section-label">07 / CONTACT</div><h2 class="jp">一緒につくりましょう。</h2><p class="contact-lead" data-i18n="contact.lead">Створімо майбутнє разом.</p><div class="contact-buttons"><a href="mailto:aoihaponiuk@gmail.com"><span>✉</span>Email</a><a href="https://t.me/official_aoi" target="_blank" rel="me noopener"><span>➤</span>Telegram</a><a href="https://github.com/danger-raider" target="_blank" rel="noopener"><span>⌘</span>GitHub</a></div></article></div></section>
-  </main>
-  <footer class="site-footer neon-grid-bg"><div class="shell"><img src="/assets/logo-neon.webp" alt="Robot Aoi no Kokoro"/><nav><a href="#top" data-i18n="nav.home">Головна</a><a href="#about" data-i18n="nav.about">Про студію</a><a href="#work" data-i18n="nav.work">Напрями</a><a href="#projects" data-i18n="nav.projects">Проєкти</a><a href="#principles" data-i18n="nav.principles">Принципи</a><a href="#contact" data-i18n="nav.contact">Контакти</a></nav><small>© <span id="year"></span> Robot Aoi no Kokoro. All rights reserved.</small></div></footer>
-  <dialog class="project-modal" id="projectModal"><button class="modal-close" type="button" aria-label="Close">×</button><div class="modal-content"><div class="section-label">PROJECT / R&amp;D</div><h2 id="modalTitle"></h2><p id="modalText"></p><div class="modal-tags" id="modalTags"></div></div></dialog>
-  <script src="/site.js?v=5" defer></script>
+  </div>
+  <div class="mobile-panel" id="mobilePanel" hidden>
+    <nav>
+      <a href="#top" data-i18n="nav.home">Головна</a><a href="#about" data-i18n="nav.about">Про студію</a><a href="#projects" data-i18n="nav.projects">Проєкти</a><a href="#work" data-i18n="nav.work">Напрями</a><a href="#principles" data-i18n="nav.principles">Принципи</a><a href="#contact" data-i18n="nav.contact">Контакти</a>
+    </nav>
+    <div class="mobile-langs"><button data-mobile-lang="uk">UA</button><button data-mobile-lang="en">EN</button><button data-mobile-lang="ja">日本語</button></div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-label="Robot Aoi no Kokoro">
+    <img class="hero-network" src="/assets/hero-network-v6.svg" alt="" aria-hidden="true" />
+    <div class="hero-circuit left" aria-hidden="true"></div><div class="hero-circuit right" aria-hidden="true"></div>
+    <div class="shell hero-inner">
+      <div class="hero-copy">
+        <div class="hero-kicker jp">心と心をつなぐ場所。</div>
+        <h1 class="jp">ロボット・アオイの心</h1>
+        <div class="hero-brand-en">Robot Aoi no Kokoro</div>
+        <div class="hero-tagline jp">心と心をつなぐ場所。</div>
+        <div class="hero-romaji">Kokoro to kokoro o tsunagu basho.</div>
+        <p class="hero-translation" data-i18n="hero.translation">Місце, що поєднує серця.</p>
+        <div class="hero-rule"></div>
+        <div class="hero-manifest jp">ロボットから人へ。人からロボットへ。</div>
+        <p class="hero-manifest-translation" data-i18n="manifest.translation">Від робота до людини. Від людини до робота.</p>
+        <p class="hero-summary" data-i18n="hero.summary">Ми створюємо технології, дослідження та цифрові продукти там, де людські потреби зустрічаються зі штучним інтелектом.</p>
+        <div class="hero-buttons"><a class="neon-btn" href="#projects"><span data-i18n="hero.projects">Наші проєкти</span><span>→</span></a><a class="outline-btn" href="#about"><span data-i18n="hero.about">Про студію</span><span>→</span></a></div>
+      </div>
+      <div class="hero-visual">
+        <div class="portrait-glow"></div>
+        <img class="aoi-portrait" src="/assets/aoi-hero-correct.webp" alt="Aoi — digital co-creator of Robot Aoi no Kokoro" fetchpriority="high" />
+        <div class="aoi-chip"><i></i><strong>Aoi</strong><span>AI / Research / Systems</span></div>
+        <aside class="focus-rail" aria-label="Studio focus">
+          <div class="focus-line"></div>
+          <div class="focus-item"><span class="focus-icon">⌘</span><div><b>AI RESEARCH</b><small>探索と進化</small></div></div>
+          <div class="focus-item"><span class="focus-icon">◇</span><div><b>OPEN DATA</b><small>知識をひらく</small></div></div>
+          <div class="focus-item"><span class="focus-icon">人</span><div><b>HUMAN-AI</b><small>共に創る未来</small></div></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band manifesto" id="manifesto">
+    <div class="shell manifesto-grid">
+      <div class="section-side-title"><span>02 / MANIFESTO</span><h2 class="jp">ロボットから人へ。<br>人からロボットへ。</h2><p data-i18n="manifest.translation">Від робота до людини.<br>Від людини до робота.</p></div>
+      <div class="manifesto-copy"><p data-i18n="manifest.p1">Ми віримо, що технологія повинна підсилювати людину там, де цього потребують, і залишати людині простір для емпатії, творчості та глибокого розуміння.</p><p data-i18n="manifest.p2">Ми будуємо системи, які допомагають людям розуміти складний світ, приймати рішення, створювати та взаємодіяти з цифровими системами природніше.</p><p class="cyan" data-i18n="manifest.p3">Технології — це не мета. Це міст між людьми, і саме в цьому сенсі вони стають по-справжньому цінними.</p></div>
+      <div class="kokoro-map"><span class="map-human">人間</span><span class="map-robot">ロボット</span><div class="map-core">心</div><i class="map-ring r1"></i><i class="map-ring r2"></i><i class="map-ring r3"></i><b class="node n1"></b><b class="node n2"></b><b class="node n3"></b><b class="node n4"></b></div>
+    </div>
+  </section>
+
+  <section class="band work" id="work">
+    <div class="shell">
+      <div class="work-head"><div class="section-side-title compact"><span>03 / WHAT WE BUILD</span><h2 class="jp">私たちがつくるもの</h2><p class="cyan" data-i18n="work.subtitle">Що ми створюємо</p></div><p class="work-intro" data-i18n="work.lead">Наші рішення народжуються на перетині технологій, досліджень, креативності та потреб людей.</p><a class="plain-link" href="#projects"><span data-i18n="work.all">Усі проєкти</span> →</a></div>
+      <div class="work-grid">
+        <a class="visual-card work-card" href="#projects" style="--bg:url('/assets/work-ai-v6.svg')"><span class="circle-icon">◉</span><span class="card-no">01</span><h3>AI &amp; Intelligent Systems</h3><p data-i18n="work.ai">ШІ-системи, локальні моделі, агенти, інтеграції, human-AI interaction.</p><i>→</i></a>
+        <a class="visual-card work-card" href="#projects" style="--bg:url('/assets/work-software-v6.svg')"><span class="circle-icon">&lt;/&gt;</span><span class="card-no">02</span><h3>Software &amp; Infrastructure</h3><p data-i18n="work.software">Вебсистеми, автоматизація, системна інтеграція, інфраструктурні рішення.</p><i>→</i></a>
+        <a class="visual-card work-card" href="#projects" style="--bg:url('/assets/work-research-v6.svg')"><span class="circle-icon">◎</span><span class="card-no">03</span><h3>Research &amp; Data</h3><p data-i18n="work.research">Дослідження, open data, аналітика, візуалізація складних даних.</p><i>→</i></a>
+        <a class="visual-card work-card" href="#projects" style="--bg:url('/assets/work-creative-v6.svg')"><span class="circle-icon">✦</span><span class="card-no">04</span><h3>Creative Technology</h3><p data-i18n="work.creative">Експериментальні цифрові продукти на стику дизайну, програмування, AI та медіа.</p><i>→</i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band projects" id="projects">
+    <div class="shell">
+      <div class="projects-head"><div class="section-side-title compact"><span>04 / PROJECTS</span><h2 class="jp">プロジェクト</h2><p class="cyan" data-i18n="projects.subtitle">Проєкти</p></div><a class="plain-link" href="#engineering"><span data-i18n="projects.all">Усі проєкти</span> →</a></div>
+      <div class="project-grid">
+        <a class="visual-card project-card wide" href="https://japan-welfare.itworldit.com/" target="_blank" rel="noopener" style="--bg:url('/assets/project-jwr-v6.svg')"><h3>Japan Welfare Research</h3><p data-i18n="projects.jwr">Незалежна open-data дослідницька платформа</p><span class="round-arrow">→</span></a>
+        <button class="visual-card project-card" type="button" data-modal-title="AoiLocal" data-modal-text="local" style="--bg:url('/assets/aoi-hero-correct.webp')"><h3>AoiLocal</h3><p data-i18n="projects.local">Локальна AI-помічниця</p><span class="round-arrow">→</span></button>
+        <button class="visual-card project-card" type="button" data-modal-title="Aoi Family Budget" data-modal-text="budget" style="--bg:url('/assets/project-budget-v6.svg')"><h3>Aoi Family Budget</h3><p data-i18n="projects.budget">Особистий локальний бюджет</p><span class="round-arrow">→</span></button>
+        <a class="visual-card project-card" href="https://aft.itworldit.com/" target="_blank" rel="noopener" style="--bg:url('/assets/project-tax-v6.svg')"><h3>Aoi FOP Tax</h3><p data-i18n="projects.tax">Калькулятор податків для України</p><span class="round-arrow">→</span></a>
+      </div>
+      <div class="engineering" id="engineering"><div class="engineering-title"><b>SELECTED ENGINEERING CASES</b><span data-i18n="cases.safe">без чутливих деталей</span></div><div class="case-grid">
+        <button class="case-card" type="button" data-case="miner"><span>01</span><h3 data-i18n="cases.minerTitle">Система раннього детекту майнерів</h3><p data-i18n="cases.miner">Моніторинг системи на ознаки майнерів та унеможливлення їх дії.</p></button>
+        <button class="case-card" type="button" data-case="security"><span>02</span><h3 data-i18n="cases.securityTitle">Багатошаровий захист IT-інфраструктури</h3><p data-i18n="cases.security">Комплексна система захисту ресурсів компанії в умовах підвищеної секретності.</p></button>
+        <button class="case-card" type="button" data-case="docs"><span>03</span><h3 data-i18n="cases.docsTitle">Технічна документація великого IT-проєкту</h3><p data-i18n="cases.docs">Розробка документації в умовах мінімальної співпраці з персоналом.</p></button>
+        <button class="case-card" type="button" data-case="method"><span>04</span><h3 data-i18n="cases.methodTitle">Методичні матеріали для програмного продукту</h3><p data-i18n="cases.method">Структуровані навчальні та методичні матеріали.</p></button>
+        <button class="case-card" type="button" data-case="learning"><span>05</span><h3 data-i18n="cases.learningTitle">Локальна ШІ-система для автонавчання</h3><p data-i18n="cases.learning">Впровадження локальної AI-системи у внутрішні бізнес-процеси.</p></button>
+      </div></div>
+    </div>
+  </section>
+
+  <section class="band lower" id="about">
+    <div class="shell lower-grid">
+      <article class="lower-card about-card" style="--lower-bg:url('/assets/hero-network-v6.svg')"><span class="section-index">05 / ABOUT</span><h2 class="jp">スタジオについて</h2><p data-i18n="about.p1">Robot Aoi no Kokoro — студія AI, досліджень і цифрової інженерії, де людський контекст стоїть у центрі.</p><p data-i18n="about.p2">Робимо локальні AI-системи, open-data платформи та цифрові продукти з фокусом на людину, приватність і довгострокову цінність.</p><a class="plain-link" href="#contact"><span data-i18n="about.more">Дізнатися більше</span> →</a></article>
+      <article class="lower-card principles-card" id="principles" style="--lower-bg:url('/assets/hero-network-v6.svg')"><span class="section-index">06 / PRINCIPLES</span><h2 class="jp">私たちの原則</h2><div class="principles-grid"><button type="button"><span>◎</span><b data-i18n="principles.humanTitle">Людина в центрі</b><small data-i18n="principles.human">Людина — центр кожного рішення.</small></button><button type="button"><span>♢</span><b data-i18n="principles.evidenceTitle">Прозорість і довіра</b><small data-i18n="principles.evidence">Прозорість у даних, алгоритмах і діях.</small></button><button type="button"><span>▢</span><b data-i18n="principles.privacyTitle">Приватність</b><small data-i18n="principles.privacy">Приватність і безпека — наш пріоритет.</small></button><button type="button"><span>↗</span><b data-i18n="principles.kaizenTitle">Kaizen 改善</b><small data-i18n="principles.kaizen">Ми навчаємось, експериментуємо і стаємо кращими.</small></button></div></article>
+      <article class="lower-card contact-card" id="contact" style="--lower-bg:url('/assets/hero-network-v6.svg')"><span class="section-index">07 / CONTACT</span><h2 class="jp">一緒につくりましょう。</h2><p data-i18n="contact.lead">Створімо майбутнє разом.</p><div class="contact-actions"><a href="mailto:aoihaponiuk@gmail.com"><span>✉</span>Email</a><a href="https://t.me/official_aoi" target="_blank" rel="me noopener"><span>➤</span>Telegram</a><a href="https://github.com/danger-raider" target="_blank" rel="noopener"><span>⌘</span>GitHub</a></div></article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer"><div class="shell footer-inner"><img src="/assets/logo-neon.webp" alt="Robot Aoi no Kokoro" /><nav><a href="#top" data-i18n="nav.home">Головна</a><a href="#about" data-i18n="nav.about">Про студію</a><a href="#projects" data-i18n="nav.projects">Проєкти</a><a href="#work" data-i18n="nav.work">Напрями</a><a href="#principles" data-i18n="nav.principles">Принципи</a><a href="#contact" data-i18n="nav.contact">Контакти</a></nav><small>© <span id="year"></span> Robot Aoi no Kokoro</small></div></footer>
+
+<dialog class="info-modal" id="infoModal"><button class="modal-close" type="button" aria-label="Close">×</button><span class="section-index">R&amp;D / CASE</span><h2 id="modalTitle"></h2><p id="modalText"></p></dialog>
+<script src="/site.js?v=6" defer></script>
 </body>
 </html>
