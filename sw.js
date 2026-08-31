@@ -1,5 +1,5 @@
-const CACHE_NAME='aoi-studio-brand-v3';
-const ASSETS=['/','/index.html','/styles.css?v=3','/site.js?v=3','/assets/aoi-japan.webp?v=3','/assets/favicon.webp','/site.webmanifest'];
-self.addEventListener('install',event=>{self.skipWaiting();event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)).catch(()=>{}));});
-self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(k=>k!==CACHE_NAME).map(k=>caches.delete(k)));await self.clients.claim();})());});
-self.addEventListener('fetch',event=>{const req=event.request;if(req.method!=='GET')return;event.respondWith((async()=>{try{const fresh=await fetch(req);if(fresh&&fresh.ok&&new URL(req.url).origin===self.location.origin){const cache=await caches.open(CACHE_NAME);cache.put(req,fresh.clone());}return fresh;}catch(_){return (await caches.match(req))||(await caches.match('/index.html'));}})());});
+const CACHE_NAME='aoi-studio-neon-v4';
+const ASSETS=['/','/index.html','/styles.css?v=4','/site.js?v=4','/assets/aoi-japan.webp?v=4','/assets/logo-full.webp?v=4','/assets/favicon.webp','/site.webmanifest'];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(ASSETS)).catch(()=>{}))});
+self.addEventListener('activate',e=>{e.waitUntil((async()=>{for(const key of await caches.keys())if(key!==CACHE_NAME)await caches.delete(key);await self.clients.claim()})())});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;e.respondWith((async()=>{try{const r=await fetch(e.request);if(r.ok&&new URL(e.request.url).origin===self.location.origin)(await caches.open(CACHE_NAME)).put(e.request,r.clone());return r}catch{return await caches.match(e.request)||await caches.match('/index.html')}})())});
