@@ -1,0 +1,46 @@
+@import url('/v6.css?v=6');
+
+/* v7 core fixes: readable type, reliable brand lockup, visible hero media */
+html{font-size:18px}
+body{font-size:1rem;line-height:1.6}
+.shell{width:min(1540px,calc(100% - 64px))}
+.site-header{min-height:76px}
+.header-inner{min-height:76px;grid-template-columns:minmax(300px,420px) 1fr auto;gap:28px}
+.brand{display:flex!important;align-items:center;gap:12px;min-width:0;overflow:visible!important;color:#eef8ff}
+.brand .brand-emblem{width:54px;height:54px;object-fit:contain;display:block;filter:drop-shadow(0 0 12px rgba(58,180,255,.45))}
+.brand .brand-copy{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.brand .brand-jp{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1rem;white-space:nowrap;text-shadow:0 0 14px rgba(94,190,255,.22)}
+.brand .brand-en{font-size:.7rem;color:#a8c7dd;margin-top:4px;letter-spacing:.03em;white-space:nowrap}
+.main-nav a{font-size:.82rem}
+.header-actions{font-size:.82rem}
+.hero{min-height:720px}
+.hero-inner{min-height:720px;grid-template-columns:minmax(520px,.9fr) minmax(620px,1.1fr)}
+.hero-copy{padding-top:76px;padding-bottom:54px}
+.hero-kicker{font-size:1.05rem}
+.hero-copy h1{font-size:clamp(3.9rem,6.2vw,6.6rem);line-height:1.02;max-width:760px}
+.hero-brand-en{font-size:clamp(2rem,2.6vw,3rem)}
+.hero-tagline{font-size:1.2rem;margin-top:22px}
+.hero-romaji,.hero-translation,.hero-manifest-translation{font-size:1rem}
+.hero-summary{font-size:1.02rem;line-height:1.75;max-width:650px}
+.hero-manifest{font-size:1.12rem}
+.hero-buttons a{font-size:.92rem;min-height:48px}
+.hero-visual{min-height:720px;position:relative;overflow:visible}
+.hero-visual .aoi-portrait{display:block!important;opacity:1!important;visibility:visible!important;position:absolute;right:-2%;bottom:0;width:min(710px,88%);height:auto;max-height:710px;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 0 36px rgba(36,151,255,.2)) saturate(1.03)}
+.aoi-chip{font-size:.78rem}
+.focus-item b{font-size:.7rem}.focus-item small{font-size:.72rem}
+.band{padding-top:44px;padding-bottom:44px}
+.section-side-title>span,.section-index,.engineering-title b{font-size:.72rem}
+.section-side-title h2{font-size:clamp(2.2rem,3.4vw,3.8rem);line-height:1.12}
+.section-side-title p{font-size:1.05rem}
+.manifesto-copy{font-size:.95rem;line-height:1.75}
+.kokoro-map{transform:scale(1.08);transform-origin:center}
+.work-intro{font-size:.95rem;line-height:1.65}
+.work-card{min-height:190px;padding:28px 26px 24px 90px}.work-card h3{font-size:1.15rem}.work-card p{font-size:.9rem;line-height:1.55}.card-no{font-size:.78rem}.circle-icon{width:48px;height:48px;font-size:1rem}
+.project-card{min-height:210px}.project-card h3{font-size:1.35rem}.project-card p{font-size:.9rem}
+.case-card{min-height:178px;padding:24px}.case-card h3{font-size:1.02rem;line-height:1.35}.case-card p{font-size:.88rem;line-height:1.5}
+.lower-card{padding:32px;min-height:400px}.lower-card h2{font-size:2.15rem}.lower-card p{font-size:.98rem;line-height:1.7}.principles-grid b{font-size:.92rem}.principles-grid small{font-size:.86rem;line-height:1.45}.contact-actions a{font-size:.95rem;min-height:46px}
+.site-footer{padding:28px 0}.footer-inner{font-size:.8rem}.footer-brand{display:flex;align-items:center;gap:10px}.footer-brand img{width:42px;height:42px;object-fit:contain}.footer-brand div{display:flex;flex-direction:column}.footer-brand strong{font-family:'Noto Serif JP',serif;font-size:.82rem}.footer-brand span{font-size:.68rem;color:#91aec3}
+
+@media (max-width:1200px){html{font-size:17px}.header-inner{grid-template-columns:minmax(250px,330px) 1fr auto}.brand .brand-jp{font-size:.9rem}.hero-inner{grid-template-columns:1fr 1fr}.hero-visual .aoi-portrait{width:95%}}
+@media (max-width:980px){.shell{width:min(100%,calc(100% - 36px))}.hero{min-height:auto}.hero-inner{grid-template-columns:1fr;min-height:auto}.hero-copy{padding-top:54px;padding-bottom:28px}.hero-copy h1{font-size:clamp(3rem,11vw,5.2rem)}.hero-visual{min-height:560px}.hero-visual .aoi-portrait{right:50%;transform:translateX(50%);width:min(640px,100%);max-height:560px}.focus-rail{right:0}.work-grid,.project-grid,.case-grid,.lower-grid{grid-template-columns:1fr 1fr}.project-card.wide{grid-column:1/-1}}
+@media (max-width:680px){html{font-size:16px}.header-inner{grid-template-columns:1fr auto;gap:12px}.brand .brand-emblem{width:44px;height:44px}.brand .brand-jp{font-size:.78rem}.brand .brand-en{font-size:.62rem}.main-nav{display:none}.hero-copy{padding-top:34px}.hero-copy h1{font-size:clamp(2.7rem,15vw,4rem)}.hero-brand-en{font-size:1.55rem}.hero-visual{min-height:470px}.hero-visual .aoi-portrait{max-height:470px}.focus-rail{display:none}.work-grid,.project-grid,.case-grid,.lower-grid{grid-template-columns:1fr}.work-card,.project-card,.case-card{min-height:170px}.lower-card{min-height:auto}.section-side-title h2{font-size:2.3rem}}

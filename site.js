@@ -1,1 +1,1 @@
-import('/v6.js?v=6');
+import('/v7.js?v=7');
