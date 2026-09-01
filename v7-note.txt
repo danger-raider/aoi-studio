@@ -1,0 +1,1 @@
+Design pass 7: fix broken logo/portrait assets, restore full i18n, increase typography.
