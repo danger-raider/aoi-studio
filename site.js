@@ -1,1 +1,1 @@
-import('/v7.js?v=7');
+Promise.all([import('/v7.js?v=7'),import('/v8.js?v=8')]);
