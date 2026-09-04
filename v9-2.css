@@ -1,0 +1,20 @@
+.manifesto { padding: 18px 0 20px; }
+.manifesto-grid {
+  display: grid; grid-template-columns: 320px 1fr 420px; gap: 28px; align-items: center;
+}
+.stacked > * { margin-top: 0; }
+.jp-big, .jp-medium { font-family: "Noto Sans JP", sans-serif; font-weight: 700; line-height: 1.07; margin: 10px 0 0; }
+.jp-big { font-size: clamp(32px, 3vw, 62px); }
+.jp-medium { font-size: clamp(30px, 2.3vw, 48px); }
+.section-caption { margin: 12px 0 0; color: var(--accent); font-size: 18px; }
+.manifesto-copy { padding-left: 24px; border-left: 1px solid rgba(120, 183, 255, 0.2); }
+.manifesto-copy p { font-size: 18px; line-height: 1.75; color: var(--muted); margin: 0 0 14px; }
+.manifesto-copy .accent-copy { color: #ddecff; }
+.manifesto-visual { display: flex; align-items: center; justify-content: center; }
+.orbit-svg { width: 100%; height: auto; }
+.orbit-svg ellipse,
+.orbit-svg circle { fill: none; stroke: rgba(118, 191, 255, 0.75); stroke-width: 1.3; }
+.orbit-svg .core { fill: rgba(35, 124, 255, 0.22); stroke: rgba(176, 225, 255, .9); }
+.orbit-svg text { font-family: "Noto Sans JP", sans-serif; fill: #f3faff; font-size: 28px; }
+.orbit-svg .heart-text { font-size: 40px; fill: #ffffff; }
+.orbit-svg .small-dot { fill: #97dcff; stroke: none; }
